@@ -1,2 +1,33 @@
-<h1>Activities#index</h1>
-<p>Find me in app/views/activities/index.html.erb</p>
+<h1>Activities</h1>
+<table>
+	<tr>
+		<td>Description</td>
+		<td>Value</td>
+	</tr>
+	<% @activities.each do |activity| %>
+	<tr>
+		<td><%= activity.description %></td>
+		<td><%= activity.value %></td>
+		<td>
+			<%= link_to edit_activity_path(activity.id), :class => "btn btn-default btn-md" do  %>
+			<i class="glyphicon glyphicon-edit pull-left"></i>&nbsp;Edit Activity
+		<%end%>
+		</td>
+		<td>
+			<%= link_to activity_path(activity.id),
+		      method: :delete,
+		      data: { confirm: 'Are you sure?' }, :class => "btn btn-default btn-md" do %>  
+		      	<i class="glyphicon glyphicon-remove pull-left"></i>&nbsp;Delete
+		    <%end%>
+		</td>
+	<tr>
+	<% end %>
+	<tr>
+		<td>
+			<%= link_to new_activity_path, :class => "btn btn-default btn-md" do %>
+			<i class = "glyphicon glyphicon-plus pull-left"></i>&nbsp; New Activity
+			<%end%>
+		</td>
+	</tr>
+</table>
+

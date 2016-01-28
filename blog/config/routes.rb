@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'activities/new'
+
   get 'activities/index'
 
   get 'welcome/index'
@@ -8,6 +10,9 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
+
+    resources :activities, :users
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
