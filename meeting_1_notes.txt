@@ -1,0 +1,59 @@
+App description:
+
+main page gives you LOGIN, high scores, about app.
+
+	-login: sends you to PROFILE
+	-high scores: sends you to HIGH SCORES
+	-about app: page explaining free services provided + point values for activities
+
+PROFILE: after logging in, you see your NAME, a CHART showing your past month's points, yearly point total below. 
+	-menu: high scores, add points, search, about, login
+
+ADD POINTS: 
+	-drop down to select activity, it will display the point value, enter quantity if needed, continue to add then click SAVE, which will send you back to the profile or CANCEL which will abandon changes and send you back to profile page
+
+HIGH SCORE: lists scores for all employees in descending order. Filters by Month/Year/Activity
+	-menu: my profile (if logged in), add points (if logged in), search, about
+
+
+design: 
+backend: node.js and postgreSQL 
+front end: angular JS, D3, bootstrap or FLEX CSS
+hosting: heroku (free and can probably support 200 users).
+
+In place of the node.js / postgreSQL backend, we could use Ruby on Rails. However I would like to try using node.
+
+PHONE SUPPORT: the Melinda explained their ideal choice was for this to be a phone application. However since the project clearly calls for a web application, and since we cannot develop for both IOS and Android, the best solution would be to make this a mobile-friendly web application. We can still create an mobile app (at least on android and probably on IOS) that simply opens the link to the site in a webview container. The advantage of giving them the app is it makes accessing the system simpler for participants who might forget site address. 
+
+
+
+
+
+Feature List: 
+
+1) users should log in to add their points
+
+2) users should see a chart showing their recent month's points, and below a total for their points for the year after logging in
+
+3) Users should be able to add points for multiple activities in one action using check boxes.
+
+4) users should be limited in the number of times they can add certain activities per day
+
+5) users should be able to view high score page which displays everyone's progress (filter by month/year/activity/team)
+
+6) a monthly summary report of points should be emailed to the coordinator
+
+7) An administrative user should exist in the case users need to be deleted or edited, or new activities/ point values added. 
+
+8) users should be able to register / change & recover password
+
+9) deploy to test environment (heroku)
+
+10) deploy to production environment
+
+
+
+
+
+
+
