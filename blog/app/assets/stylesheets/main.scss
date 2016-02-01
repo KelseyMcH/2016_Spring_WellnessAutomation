@@ -67,8 +67,8 @@ body {
 /* end flex stuff */
 
 .header, .footer {
-	width: 100%
-	background-color: #5a5a5a;
+	width: 100%;
+	background-color: rgb(73, 47, 148);
 	font-size: 120%;
 }
 
@@ -89,7 +89,7 @@ body {
 }
 
 .footer {
-	background-color: #ffa500;
+	background-color: rgb(73, 47, 148);
 	width: 100%;
 	position: fixed;
 	bottom: 0px;
@@ -100,6 +100,7 @@ body {
 	line-height: 1em;
 	margin-right: 5px;
 	text-align: center;
+	background-color: rgb(73, 47, 148);
 }
 
 .section {
@@ -140,7 +141,7 @@ body {
     background-color: #200c60;
 }
 .footer {
-    background-color: #836fbe; /*#351c7a; */
+    background-color: rgb(73, 47, 148); /*#351c7a; */
     width: 100%;
     position: fixed;
     bottom: 0px;
@@ -160,4 +161,13 @@ body {
 }
 .nav.navbar-nav.navbar-right li a:hover {
   color: grey;
+}
+
+.nav_options{
+	font-size:20px;
+}
+
+.small_logo{
+	width:150px;
+	height:50px;
 }
