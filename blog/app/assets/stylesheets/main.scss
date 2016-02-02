@@ -1,0 +1,170 @@
+html, body {
+	height: 100%;
+	min-height: 100%;
+}
+
+body {
+	margin: 0 auto;
+}
+
+.hidden {
+	display: none;
+}
+
+/* flex containers */
+.f-column {
+	display: flex;
+	flex-direction: column;
+}
+
+.f-row {
+    display: flex;
+    flex-direction: row;
+}
+
+/* flex container properties */ 
+
+.f-row.center-vert, .f-column.center-hor{
+	align-items: center;
+}
+
+.f-column.center-vert, .f-row.center-hor{
+
+	justify-content: center;
+}
+
+.f-justify-spread{
+	justify-content: space-between;
+}
+
+.f-justify-space{
+	justify-content: space-around;
+}
+
+/* flex container -> flex items */
+
+.f-even > * {
+	flex: 1;
+}
+
+/* flex items */
+
+.f-expand {
+    flex-grow: 1;
+}
+
+.f-contract {
+	flex-grow: 0;
+}
+.aside {
+	flex: 1 auto;
+}
+
+.main {
+	flex: 3 auto;
+}
+
+/* end flex stuff */
+
+.header, .footer {
+	width: 100%;
+	background-color: rgb(73, 47, 148);
+	font-size: 120%;
+}
+
+.header {
+	box-shadow:  0px 4px 0px #000000;
+}
+
+.header.fixed{
+	position: fixed;
+	top: 0px;
+}
+
+.header div {
+	font: 36px Calibri, sans-serif;
+	font-weight: 100;
+	line-height: 1em;
+	margin-eft: 20px;
+}
+
+.footer {
+	background-color: rgb(73, 47, 148);
+	width: 100%;
+	position: fixed;
+	bottom: 0px;
+}
+
+.footer div {
+	font: 12px Calibri, sans-serif;
+	line-height: 1em;
+	margin-right: 5px;
+	text-align: center;
+	background-color: rgb(73, 47, 148);
+}
+
+.section {
+	height: 400px;
+}
+
+.grey {
+	background: #ececec;
+}
+
+
+.blue {
+	background-color: #492f94;
+}
+
+.gradientheader {
+    background: linear-gradient(#200c60, #836fbe);
+}
+.purpletext {
+    height: 225px;
+    color: #200c60;
+}
+
+#gold {
+    color: #d7903f;
+}
+.whitetext {
+    color: white;
+}
+.jumbotron * {
+    text-align: center;
+    margin: 0 auto;
+}
+.blue {
+    background-color: #200c60;
+}
+.footer {
+    background-color: rgb(73, 47, 148); /*#351c7a; */
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+}
+.nav.navbar-nav.navbar-right li a {
+    color: #efefef;
+}
+.navbar-header.page-scroll a {
+    color: #efefef; /* #d7903f; */
+}
+.footer div {
+    color: #FFFFFF;
+    font: 12px Calibri, sans-serif;
+    line-height: 1.5em;
+    margin-right: 25px;
+    text-align: center;
+}
+.nav.navbar-nav.navbar-right li a:hover {
+  color: grey;
+}
+
+.nav_options{
+	font-size:20px;
+}
+
+.small_logo{
+	width:150px;
+	height:50px;
+}
