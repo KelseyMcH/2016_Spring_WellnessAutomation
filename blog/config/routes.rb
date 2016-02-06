@@ -6,6 +6,10 @@ Rails.application.routes.draw do
 
   get 'welcome/index'
 
+  get 'welcome/stats'
+
+  get 'welcome/profile'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
