@@ -8,26 +8,38 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#index.html">LifeCare Alliance</a>
-            </div>
+                <%=link_to( image_tag("purpleLogo.png", :class => "small_logo"), '/index') %>
+            
 
+
+
+            <% if current_user %>
+                Signed in as <%= current_user.email %> | <%= link_to "Logout", '/logout' %>
+            <% end %>
+            </div>
+            
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
+                <% if current_user %>
+                <ul class="nav navbar-nav navbar-right nav_options">
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="stats.html">Scoreboard</a>
+                        <%= link_to "Scoreboard", '/index' %>
                     </li>
                     <li class="page-scroll">
-                        <a href="profile.html">Profile</a>
+                        <%= link_to "Users", current_user %>
                     </li>
                     <li class="page-scroll">
-                        <a href="#contact">Add Points</a>
+                        <%= link_to "Add Points", '/activities' %>
                     </li>
                 </ul>
+                <% else %>
+                <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
+            <% end %>
             </div>
+            
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->

@@ -3,8 +3,8 @@
 <head>
   <title>Wellness Tracker</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
   <%= csrf_meta_tags %>
     <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -15,63 +15,15 @@
 
   <!-- Latest compiled JavaScript -->
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <%= stylesheet_link_tag "stylesheets/main.scss" %>
 </head>
 <body>
-<!-- Begin Navbar -->
-<nav class="navbar navbar-default navbar-fixed-top gradientheader">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <%=link_to( image_tag("purpleLogo.png", :class => "small_logo"), "#index.html") %>
-                
-            </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right nav_options">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="stats.html">Scoreboard</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="profile.html">Profile</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#contact">Add Points</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-<!-- End Navbar -->
+<%= render :partial => 'layouts/header' %>
 
 <!-- Generate individual page content -->
 <%= yield %>
 
-<!-- Begin Footer -->
-<div class="footer">
-    <div class="row">
-      <div>
-      <p>1699 W Mound St. Columbus &#x2022; Ohio 43223 &#x2022; <i class="fa fa-phone"></i> 614-278-3130 &#x2022; <i class="fa fa-fax"></i> 614-278-3143
-      </div>   
-    </div>
-    <div class="row">
-      Built by OSU Software Capstone Class of 2016
-    </div>
-</div>
-
-<!-- End Footer -->
+<%= render :partial => 'layouts/footer'%>
 
 </body>
 </html>

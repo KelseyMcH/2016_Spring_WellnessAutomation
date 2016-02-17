@@ -1,0 +1,25 @@
+<div class="jumbotron purpletext">
+    <h1>Register</h1>
+    <p> if you haven't already registered with your @lifecarealliance.org email address, you can do so here. </p>
+</div>
+
+<div class="fuck">
+
+  <%= form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
+    <p> First name:</p> <%= f.text_field :fname%> 
+    <p> Last Name:</p> <%= f.text_field :lname%> 
+    <p> Email:</p> <%= f.text_field :email%>
+    <p> Department:</p> <%= f.text_field :department%>
+    <p> Password:</p> <%= f.password_field :password%>
+    <p> Password Confirmation:</p> <%= f.password_field :password_confirmation%>    
+    <br/> <br/>
+    <%= f.submit :Signup %>
+  <% end %>
+  <% if @user.errors.any? %>
+    <ul class="Signup_Errors">
+    <% for message_error in @user.errors.full_messages %>
+      <li>* <%= message_error %></li>
+    <% end %>
+    </ul>
+  <% end %>
+</div>

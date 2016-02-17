@@ -1,0 +1,18 @@
+<div class="jumbotron purpletext">
+<h1>HIGH SCORES</h1>
+<p> just an index of users for now </p>
+</div>
+
+<div class="text-center">
+    <h3>Users</h3>
+
+        <% @users.each do |x| %>
+          <p>
+            <%= link_to x.email, x %>
+
+          </p>
+          <br/>
+        <% end %>
+
+</div>
+
