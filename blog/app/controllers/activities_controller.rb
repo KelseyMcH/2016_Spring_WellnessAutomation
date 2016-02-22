@@ -17,7 +17,7 @@ class ActivitiesController < ApplicationController
   end
 
   def destroy
-    # TODO what to do with user associations?
+    #TODO what to do with user associations?
     @activity = Activity.find(params[:id])
     @activity.destroy
     redirect_to action: "index"
