@@ -36,7 +36,14 @@
                     </li>
                 </ul>
                 <% else %>
-                <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
+                <ul class="nav navbar-nav navbar-right nav_options">
+                    <li>
+                        <%= link_to 'Login', '/login' %>
+                    </li>
+                    <li>
+                        <%= link_to 'Signup', '/signup' %>
+                    </li>
+                </ul>
             <% end %>
             </div>
             

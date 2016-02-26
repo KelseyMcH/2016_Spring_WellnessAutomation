@@ -32,6 +32,7 @@ body {
 }
 .nav.navbar-nav.navbar-right li a {
     color: #efefef;
+    float:right;
 }
 .navbar-header.page-scroll a {
     color: #efefef; /* #d7903f; */
@@ -45,4 +46,37 @@ body {
 }
 .nav.navbar-nav.navbar-right li a:hover {
   color: grey;
+}
+
+button, html input[type=button], input[type=reset]{
+    margin-top:20px;
+    margin-right:10px;
+}
+
+#email, #password{
+    width:100%;
+    -moz-border-radius:15px;
+    border-radius: 15px;
+    border:solid 1px black;
+    padding:5px;
+    margin-bottom:5%;
+
+}
+
+.subsign{
+    margin-right:2.5%!important;
+    margin-left:2.5%!important;
+    padding-right: 10%!important;
+    padding-left: 10%!important;
+}
+
+.btn-primary{
+    background:linear-gradient(#200c60, #836fbe)!important;
+    border-color:#200c60!important;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: #836fbe;
+    border-color: #285e8e; /*set the color you want here*/
 }
