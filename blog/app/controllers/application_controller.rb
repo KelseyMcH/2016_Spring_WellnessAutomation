@@ -11,4 +11,10 @@ class ApplicationController < ActionController::Base
   def authorize
     redirect_to '/login' unless current_user
   end
+
+  def superauthorize
+    redirect_to current_user unless current_user.admin
+  end
 end
+
+

@@ -6,11 +6,16 @@ class UsersController < ApplicationController
 
   def create
     user = User.new(user_params)
-    if user.save
+
+    domain = user.email.slice(/@.*/)
+    puts domain
+
+    if domain == '@lifecarealliance.org' && user.save
       session[:user_id] = user.id
       redirect_to user
     else
       redirect_to '/signup'
+      #GIVE BACK ERROR? FLASH MESSAGE
     end
   end
 

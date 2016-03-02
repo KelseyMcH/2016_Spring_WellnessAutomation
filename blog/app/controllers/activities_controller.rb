@@ -1,7 +1,7 @@
 class ActivitiesController < ApplicationController
 
-  before_filter :authorize
-
+  before_filter :superauthorize
+  #this can be used on individual methods if necessary, if we want the activity list to be visible. 
 
   def index
   	@activities = Activity.all

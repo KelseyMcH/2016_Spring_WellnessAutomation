@@ -29,11 +29,18 @@
                         <%= link_to "Scoreboard", '/index' %>
                     </li>
                     <li class="page-scroll">
-                        <%= link_to "Users", current_user %>
+                        <%= link_to "My Profile", current_user %>
                     </li>
+                    <%if current_user.admin %>
+                    <li class="page-scroll">
+                        <%= link_to "Edit Activities", '/activities' %>
+                    </li>
+                    <% else %>
+                    <!-- the user is a regular user, so link to add points TODO change link -->
                     <li class="page-scroll">
                         <%= link_to "Add Points", '/activities' %>
                     </li>
+                    <%end%>
                 </ul>
                 <% else %>
                 <ul class="nav navbar-nav navbar-right nav_options">
