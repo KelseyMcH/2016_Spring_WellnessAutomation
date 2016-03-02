@@ -20,6 +20,13 @@
 
 <%= render :partial => 'layouts/header' %>
 
+<!-- render flash messages, a quick way to give feedback about activity -->
+
+ <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %>
+
+
 <!-- Generate individual page content -->
 <%= yield %>
 

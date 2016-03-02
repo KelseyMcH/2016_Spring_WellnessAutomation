@@ -27,4 +27,4 @@ Activity.create(description: 'Get at least 7 hours of sleep', value: 2);
 Activity.create(description: 'When stressed, close your eyes and take 10 slow, deep breaths or visualize your favorite place for 30 seconds', value: 2);
 Activity.create(description: 'Every 15 minutes of exercise ', value: 1);
 admin = User.create(fname: "admin", lname: "admin", department: "admin", email: 'wellnessadmin@lifecarealliance.org', password: "dontforget", password_confirmation: "dontforget"); #password: dontforget
-admin.toggle!(:admin);
+admin.toggle!(:admin)

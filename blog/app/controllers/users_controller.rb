@@ -12,8 +12,10 @@ class UsersController < ApplicationController
 
     if domain == '@lifecarealliance.org' && user.save
       session[:user_id] = user.id
+      flash[:success] = "good job you created your account!"
       redirect_to user
     else
+      flash[:warning] = "something is wrong with this form"
       redirect_to '/signup'
       #GIVE BACK ERROR? FLASH MESSAGE
     end
