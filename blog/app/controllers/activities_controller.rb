@@ -1,10 +1,8 @@
 class ActivitiesController < ApplicationController
 
-  before_filter :superauthorize
-  #this can be used on individual methods if necessary, if we want the activity list to be visible. 
-
   def index
   	@activities = Activity.all
+    @admin = current_user.admin
   end
 
   def new
@@ -35,6 +33,15 @@ class ActivitiesController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def log
+    @action = Action.new(:user => current_user.id, :activity => act_id)
+    if @action.save
+       flash[:success]="activity logged"
+   else
+       flash[:error]=":-) epic fail"
+   end
   end
 
   private

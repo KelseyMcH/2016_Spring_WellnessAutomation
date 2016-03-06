@@ -33,12 +33,12 @@
                     </li>
                     <%if current_user.admin %>
                     <li class="page-scroll">
-                        <%= link_to "Edit Activities", '/activities' %>
+                        <%= link_to "Edit Activities", activities_path %>
                     </li>
                     <% else %>
                     <!-- the user is a regular user, so link to add points TODO change link -->
                     <li class="page-scroll">
-                        <%= link_to "Add Points", '/activities' %>
+                        <%= link_to "Add Points", activities_path %>
                     </li>
                     <%end%>
                 </ul>
