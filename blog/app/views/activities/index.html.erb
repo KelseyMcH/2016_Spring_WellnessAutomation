@@ -8,6 +8,7 @@
 	<tr>
 		<td><%= activity.description %></td>
 		<td><%= activity.value %></td>
+		<% if current_user.admin %>
 		<td>
 			<%= link_to edit_activity_path(activity.id), :class => "btn btn-default btn-md" do  %>
 			<i class="glyphicon glyphicon-edit pull-left"></i>&nbsp;Edit Activity
@@ -20,6 +21,13 @@
 		      	<i class="glyphicon glyphicon-remove pull-left"></i>&nbsp;Delete
 		    <%end%>
 		</td>
+		<% else %>
+		<td>
+			<%= link_to '/log', controller: 'activites', act_id: activity.id, :class => "btn btn-default btn-md" do  %>
+			<i class="glyphicon glyphicon-plus pull-left"></i>&nbsp;Log Activity
+		<%end%>
+		</td>
+		<% end %>
 	<tr>
 	<% end %>
 	<tr>

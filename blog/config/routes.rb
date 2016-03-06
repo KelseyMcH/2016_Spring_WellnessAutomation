@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
   
 
+  get 'actions/create'
+
+  get 'actions/new'
+
+  get 'actions/create'
+
+  get 'actions/new'
+
   resources :activities, :users
 
   get '/login' => 'welcome#index'
@@ -10,6 +18,8 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
   get 'index' => 'users#index'
+
+  match 'activities/log' => 'activities#log' as :activites_Log
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

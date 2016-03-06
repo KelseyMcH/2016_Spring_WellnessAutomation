@@ -1,18 +1,68 @@
 <div class="jumbotron purpletext">
-<h1>HIGH SCORES</h1>
-<p> just an index of users for now </p>
+	<h1>HIGH SCORES<span id="gold" class="glyphicon glyphicon-star-empty"></span></h1>
+	<div class="row hideshow">
+		<button class="btn btn-primary btn-lg" id="hide">User Scores</button>
+		<button class="btn btn-primary btn-lg" id="show">Department Scores</button>
+	</div>
 </div>
 
 <div class="text-center">
-    <h3>Users</h3>
+	<div class="row">
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-8">
+			
 
-        <% @users.each do |x| %>
-          <p>
-            <%= link_to x.email, x %>
+			<div class="tablecontainer">
+				<table class="table user_table">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Department</th>
+							<th>Points</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @users.each do |x| %>
+							<tr>
+								<td><%= link_to x.email, x %></td>
+					      		<td><%= link_to x.department, x %></td>
+					      		<td>0</td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+				<table class="table dep_table" style="display:none">
+					<thead>
+						<tr>
+							<th>Department</th>
+							<th>Points</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @users.each do |x| %>
+							<tr>
+					      		<td><%= link_to x.department, x %></td>
+					      		<td>0</td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		    <script>
+		    $("#hide").click(function(){
+		    	$(".user_table").show();
+		    	$(".dep_table").hide();
+			});
 
-          </p>
-          <br/>
-        <% end %>
-
+			$("#show").click(function(){
+			    $(".dep_table").show();
+			    $(".user_table").hide();
+			});
+			</script>	
+		</div>
+		<div clas="col-md-2">
+		</div>
+	</div>
 </div>
 
