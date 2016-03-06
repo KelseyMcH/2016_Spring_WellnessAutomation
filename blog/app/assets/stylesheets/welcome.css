@@ -80,3 +80,22 @@ button, html input[type=button], input[type=reset]{
     background-color: #836fbe;
     border-color: #285e8e; /*set the color you want here*/
 }
+
+
+
+#table_heading{
+    font-size:24px;
+    font-weight:bold;
+}
+
+.table thead th{
+    text-align:center;
+}
+
+.hideshow{
+    padding-top:1%;
+}
+
+.yield{
+    height:115%;
+}

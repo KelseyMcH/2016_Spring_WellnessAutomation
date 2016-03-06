@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20160304050038) do
 
+
   create_table "actions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
