@@ -36,7 +36,7 @@ class ActivitiesController < ApplicationController
   end
 
   def log
-    @action = Action.new(:user => current_user.id, :activity => act_id)
+    @action = Action.new(:user_id => params[:user_id], :activity_id => params[:activity_id])
     if @action.save
        flash[:success]="activity logged"
    else
