@@ -35,4 +35,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:fname, :lname, :department, :email, :password, :password_confirmation)
   end
 
+  def change
+  end
+
 end

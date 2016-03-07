@@ -7,4 +7,10 @@ class WelcomeController < ApplicationController
 
   def profile
   end
+
+  def recover_password
+  end
+
+  def guide
+  end
 end
