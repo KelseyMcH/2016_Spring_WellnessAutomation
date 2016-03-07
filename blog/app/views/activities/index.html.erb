@@ -23,7 +23,7 @@
 		</td>
 		<% else %>
 		<td>
-			<%= link_to '/log', controller: 'activites', act_id: activity.id, :class => "btn btn-default btn-md" do  %>
+			<%= link_to actions_create_path(:user_id => current_user.id, :activity_id => activity.id), method: :post, :class => "btn btn-default btn-md" do  %>
 			<i class="glyphicon glyphicon-plus pull-left"></i>&nbsp;Log Activity
 		<%end%>
 		</td>
