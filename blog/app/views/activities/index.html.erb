@@ -1,41 +1,56 @@
+<div class = "col-md-2"></div>
+<div class = "col-md-8">
 <h1>Activities</h1>
-<table>
-	<tr>
-		<td>Description</td>
-		<td>Value</td>
-	</tr>
-	<% @activities.each do |activity| %>
-	<tr>
-		<td><%= activity.description %></td>
-		<td><%= activity.value %></td>
-		<% if current_user.admin %>
-		<td>
-			<%= link_to edit_activity_path(activity.id), :class => "btn btn-default btn-md" do  %>
-			<i class="glyphicon glyphicon-edit pull-left"></i>&nbsp;Edit Activity
-		<%end%>
-		</td>
-		<td>
-			<%= link_to activity_path(activity.id),
-		      method: :delete,
-		      data: { confirm: 'Are you sure?' }, :class => "btn btn-default btn-md" do %>  
-		      	<i class="glyphicon glyphicon-remove pull-left"></i>&nbsp;Delete
-		    <%end%>
-		</td>
-		<% else %>
-		<td>
-			<%= link_to actions_create_path(:user_id => current_user.id, :activity_id => activity.id), method: :post, :class => "btn btn-default btn-md" do  %>
-			<i class="glyphicon glyphicon-plus pull-left"></i>&nbsp;Log Activity
-		<%end%>
-		</td>
-		<% end %>
-	<tr>
-	<% end %>
-	<tr>
-		<td>
-			<%= link_to new_activity_path, :class => "btn btn-default btn-md" do %>
-			<i class = "glyphicon glyphicon-plus pull-left"></i>&nbsp; New Activity
-			<%end%>
-		</td>
-	</tr>
-</table>
+	<form id="live-search" action="" class="styled" method="post">
+	    <div class = "form-group">
+	        <input type="text" class="form-control" id="filter" placeholder="Search..." value="" />
+	    </div>
+	</form>
+	<table>
+		<thead>
+			<tr>
+				<td>Description</td>
+				<td>Value</td>
+			</tr>
+		</thead>
+		<tbody>
+			<% @activities.each do |activity| %>
+			<tr>
+				<td class = "description"><%= activity.description %></td>
+				<td><%= activity.value %></td>
+				<% if current_user.admin %>
+				<td>
+					<%= link_to edit_activity_path(activity.id), :class => "btn btn-default btn-md" do  %>
+					<i class="glyphicon glyphicon-edit pull-left"></i>&nbsp;Edit Activity
+				<%end%>
+				</td>
+				<td>
+					<%= link_to activity_path(activity.id),
+				      method: :delete,
+				      data: { confirm: 'Are you sure?' }, :class => "btn btn-default btn-md" do %>  
+				      	<i class="glyphicon glyphicon-remove pull-left"></i>&nbsp;Delete
+				    <%end%>
+				</td>
+				<% else %>
+				<td>
+					<%= link_to actions_create_path(:user_id => current_user.id, :activity_id => activity.id), method: :post, :class => "btn btn-default btn-md" do  %>
+					<i class="glyphicon glyphicon-plus pull-left"></i>&nbsp;Log Activity
+				<%end%>
+				</td>
+				<% end %>
+			</tr>
+			<% end %>
+			<% if current_user.admin %>
+				<tr>
+					<td>
+						<%= link_to new_activity_path, :class => "btn btn-default btn-md" do %>
+						<i class = "glyphicon glyphicon-plus pull-left"></i>&nbsp; New Activity
+						<%end%>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+<div class = "col-md-2"></div>
 

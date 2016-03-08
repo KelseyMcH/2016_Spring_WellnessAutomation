@@ -35,15 +35,6 @@ class ActivitiesController < ApplicationController
     end
   end
 
-  def log
-    @action = Action.new(:user_id => params[:user_id], :activity_id => params[:activity_id])
-    if @action.save
-       flash[:success]="activity logged"
-   else
-       flash[:error]=":-) epic fail"
-   end
-  end
-
   private
   def activity_params
       params.require(:activity).permit(:description, :value)
