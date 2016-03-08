@@ -1,0 +1,81 @@
+<h1>LifeCare Alliance Wellness Automation User Guide</h1>
+
+<p>Built by OSU Software Capstone Class of 2016</p>
+<hr>
+
+<p>1. Login Screen</p>
+<img src="/assets/login_desktop.jpg" alt="Desktop">
+<img src="/assets/login_mobile.jpg" alt="Mobile">
+</br></br>
+
+<p>This is the main landing page that you will find when you open the webpage. This is the login screen.</br></br>
+Username: This is the username for your Lifecare Alliance wellness account. The username is going to be your Lifecare Alliance email address, for example, johnsmith@lifecarealliance.org</br></br>
+Password: This is the password for your Lifecare Alliance account.</br></br>
+Forgot your password?: This is the link you will click if you have forgotten your password and need to recover it.</br>
+If you already have an account, then enter your information into the provided fields and click the login button. If you are using this for the first time, and do not have an account, then you will need to register for a new account by clicking the register button.</br></br></p>
+<hr>
+
+<p>2. Register Screen</p>
+<img src="/assets/register_desktop.jpg" alt="Desktop">
+<img src="/assets/register_mobile.jpg" alt="Mobile">
+</br></br>
+
+<p>This is the screen you will be redirected to once you click on the “register” button on the login screen.</br></br>
+Full Name: This is your full name, not a traditional username, for example, John Smith. Nicknames are acceptable as long as they are appropriate, for example, Nick instead of Nicholas.</br></br>
+Password: This the password you want to be associated with your account.</br></br>
+Department: This is the department you work in at LifeCare Alliance.</br></br>
+Email: This is your LifeCare Alliance issued email, for example, johnsmith@lifecarealliance.org</br></br>
+After entering all of this information, you click the “Register“ button to finalize the creation of your account.</br></br>
+Clicking the “Back to Login” button will take you back to the Login Screen and all of the information you may have entered so far will be cleared.</br></br></p>
+<hr>
+
+<p>3. Recover Password Screen</p>
+<img src="/assets/recover_desktop.jpg" alt="Desktop">
+<img src="/assets/recover_mobile.jpg" alt="Mobile">
+</br></br>
+
+<p>This is the screen you will be directed to if you click the “Forgot your password?” link on the main login page.</br></br>
+Username: This is the lifecarealliance.org email associated with your account, for example, johndoe@lifecarealliance.org</br></br>
+After entering your email username, the password on that account will be reset and an email will be sent to that user containing their new temporary password.</br></br></p>
+<hr>
+
+<p>4. Profile Screen</p>
+<img src="/assets/profile_desktop.jpg" alt="Desktop">
+<img src="/assets/profile_mobile.jpg" alt="Mobile">
+</br></br>
+
+<p>After successfully logging in, you should land on your personal profile page. It will display your name at the top of the page, and your score below that. Beneath your name and points, it will display a graph which shows you your point values over time as well as what proportions of your points are from which activities.</br></br>
+Up in the upper right hand corner, there are 3 buttons: “Scoreboard”, “Profile”, and “Add Points”. Clicking “Scoreboard” will take you to the scoreboard for the whole company, and “Add Points” will take you to the input form for logging your activities. Since you are already on your profile page, clicking “Profile” merely refreshes the page.</br></br></p>
+<hr>
+
+<p>5. Change Password Screen</p>
+<img src="/assets/password_desktop.jpg" alt="Desktop">
+<img src="/assets/password_mobile.jpg" alt="Mobile">
+</br></br>
+
+<p>This is the page you will be redirected to after clicking the change password button.</br></br>
+Current password: This is your current password that you wish to have changed.</br></br>
+Proposed password: This is what you want your new password to be.</br></br>
+After hitting submit, your password will be updated and you will be redirected to your profile.</br></br></p>
+<hr>
+
+<p>6. Add Points Screen</p>
+<img src="/assets/points_desktop.jpg" alt="Desktop">
+<img src="/assets/point_mobile.jpg" alt="Mobile">
+</br></br>
+
+<p>Up in the upper right hand corner, there are 3 buttons: “Scoreboard”, “Profile”, and “Add Points”. Clicking “Profile” will take you to your personal profile, and “Scoreboard” will take you to the scoreboard for the whole company. Since you are already on the point input screen, clicking “Add Points” merely refreshes the page.</br></br></p>
+<hr>
+
+<p>7. ScoreBoard</p>
+<img src="/assets/scoreboard_desktop.jpg" alt="Desktop">
+<img src="/assets/scoreboard_mobile.jpg" alt="Mobile">
+</br></br>
+
+<p>
+This screen displays the names of your co workers and displays their team and point values. You can manipulate the filter options to restrict who you see and how they are sorted.</br></br>
+Up in the upper right hand corner, there are 3 buttons: “Scoreboard”, “Profile”, and “Add Points”. Clicking “Profile” will take you to your personal profile, and “Add Points” will take you to the input form for logging your activities. Since you are already on the scoreboard, clicking “Scoreboard” merely refreshes the page.</br></br></p>
+<hr>
+
+
+

@@ -1,0 +1,9 @@
+<div class="jumbotron purpletext">
+<h1>
+<%= @user.fname.capitalize %> <%= @user.lname.capitalize %>
+</h1>
+
+<p> department: <span> <%= @user.department %> </p>
+<p> email: <span> <%= @user.email %> </p>
+<%= link_to "Change your password", '/change', method: :get %>
+</div>
