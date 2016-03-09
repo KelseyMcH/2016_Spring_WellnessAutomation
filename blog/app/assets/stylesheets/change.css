@@ -1,0 +1,17 @@
+#current, #new{
+    width:20%;
+    -moz-border-radius:15px;
+    border-radius: 15px;
+    border:solid 1px black;
+    padding:5px;
+    margin-bottom:1%;
+}
+
+.new-pass{
+	padding-left:5%!important;
+	padding-right:5%!important;
+}
+
+#change-pass{
+	padding-top:2%;
+}
