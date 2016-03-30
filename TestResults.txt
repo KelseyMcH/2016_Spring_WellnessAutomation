@@ -1,0 +1,12 @@
+Chrome, IE, Firefox
+-username and password text fields are formatted incorrectly
+-clicking the lifecare alliance logo takes you to the scoreboard even if you arent logged in
+-clicking forgot your password refreshes the page
+-"signed in as" portion is hard to see
+-"user guide" portion is hard to see
+-hitting enter on the activities search bar causes an error
+-using  /activities bookmark causes error
+-using a /users/1 link allows you look at profiles without being logged in
+
+
+
