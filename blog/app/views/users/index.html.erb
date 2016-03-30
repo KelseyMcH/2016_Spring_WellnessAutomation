@@ -1,68 +1,60 @@
+<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
 <div class="jumbotron purpletext">
 	<h1>HIGH SCORES<span id="gold" class="glyphicon glyphicon-star-empty"></span></h1>
-	<div class="row hideshow">
-		<button class="btn btn-primary btn-lg" id="hide">User Scores</button>
-		<button class="btn btn-primary btn-lg" id="show">Department Scores</button>
-	</div>
 </div>
 
-<div class="text-center">
-	<div class="row">
-		<div class="col-md-2">
-		</div>
-		<div class="col-md-8">
-			
+<div class="score-container">
+	<!-- Nav pills -->
+	<ul class="nav nav-pills">
+	  <li class="active"><a href="#tab-1" data-toggle="tab">User Scores</a></li>
+	  <li><a href="#tab-2" data-toggle="tab">Department Scores</a></li>
+	</ul>
 
+	<!-- Tab panes -->
+	<div class="tab-content well">
+		<div class="tab-pane active" id="tab-1">
 			<div class="tablecontainer">
-				<table class="table user_table">
-					<thead>
+			<table class="table user_table">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Department</th>
+						<th>Points</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @users.each do |x| %>
 						<tr>
-							<th>Name</th>
-							<th>Department</th>
-							<th>Points</th>
+							<td><%= link_to x.email, x %></td>
+				      		<td><%= link_to x.department, x %></td>
+				      		<td>0</td>
 						</tr>
-					</thead>
-					<tbody>
-						<% @users.each do |x| %>
-							<tr>
-								<td><%= link_to x.email, x %></td>
-					      		<td><%= link_to x.department, x %></td>
-					      		<td>0</td>
-							</tr>
-						<% end %>
-					</tbody>
-				</table>
-				<table class="table dep_table" style="display:none">
-					<thead>
-						<tr>
-							<th>Department</th>
-							<th>Points</th>
-						</tr>
-					</thead>
-					<tbody>
-						<% @users.each do |x| %>
-							<tr>
-					      		<td><%= link_to x.department, x %></td>
-					      		<td>0</td>
-							</tr>
-						<% end %>
-					</tbody>
-				</table>
-			</div>
-		    <script>
-		    $("#hide").click(function(){
-		    	$(".user_table").show();
-		    	$(".dep_table").hide();
-			});
-
-			$("#show").click(function(){
-			    $(".dep_table").show();
-			    $(".user_table").hide();
-			});
-			</script>	
+					<% end %>
+				</tbody>
+			</table>
 		</div>
-		<div clas="col-md-2">
+		</div>
+		<div class="tab-pane" id="tab-2">
+			<table class="table dep_table">
+						<thead>
+							<tr>
+								<th>Department</th>
+								<th>Points</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% @users.each do |x| %>
+								<tr>
+						      		<td><%= link_to x.department, x %></td>
+						      		<td>0</td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
 		</div>
 	</div>
 </div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="//cdn.rawgit.com/tonystar/bootstrap-hover-tabs/v3.1.1/bootstrap-hover-tabs.js"></script>
 

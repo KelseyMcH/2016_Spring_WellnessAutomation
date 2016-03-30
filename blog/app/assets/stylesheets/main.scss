@@ -91,7 +91,7 @@ body {
 .footer {
 	background-color: rgb(73, 47, 148);
 	width: 100%;
-	position: fixed;
+	position: relative;
 	bottom: 0px;
 }
 
@@ -140,7 +140,7 @@ body {
 .footer {
     background-color: rgb(73, 47, 148); /*#351c7a; */
     width: 100%;
-    position: fixed;
+    position: relative;
     bottom: 0px;
 }
 .nav.navbar-nav.navbar-right li a {
