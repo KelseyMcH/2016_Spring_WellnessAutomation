@@ -6,6 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Activity.create(description: 'Exercise ', value: 1, needsquantity: true);
 Activity.create(description: 'Participate in a biometric screening and a Health Risk Assessment', value: 25);
 Activity.create(description: 'Attend 6 sessions with the Nurse for smoking cessation', value: 25);
 Activity.create(description: 'Complete any LifeCare Alliance wellness program', value: 25);
@@ -25,16 +26,15 @@ Activity.create(description: 'Use a food tracker like MyFitnessPal for one day',
 Activity.create(description: 'Try a new healthy recipe', value: 2);
 Activity.create(description: 'Get at least 7 hours of sleep', value: 2);
 Activity.create(description: 'When stressed, close your eyes and take 10 slow, deep breaths or visualize your favorite place for 30 seconds', value: 2);
-Activity.create(description: 'Every 15 minutes of exercise ', value: 1);
 
-Department.create(dept_name: 'Carrie\'s and Catering');
-Department.create(dept_name: 'Dining Centers');
-Department.create(dept_name: 'Help at Home');
-Department.create(dept_name: 'Home Delivered');
-Department.create(dept_name: 'IMPACT and CCC');
-Department.create(dept_name: 'Kitchen');
-Department.create(dept_name: 'Management and Grants');
-Department.create(dept_name: 'Wellness');
+#Department.create(dept_name: 'Carrie\'s and Catering');
+#Department.create(dept_name: 'Dining Centers');
+#Department.create(dept_name: 'Help at Home');
+#Department.create(dept_name: 'Home Delivered');
+#Department.create(dept_name: 'IMPACT and CCC');
+#Department.create(dept_name: 'Kitchen');
+#Department.create(dept_name: 'Management and Grants');
+#Department.create(dept_name: 'Wellness');
 
 
 
