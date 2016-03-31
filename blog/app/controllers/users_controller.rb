@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def new 
     @user = User.new
+    @departments = Department.all
     render 'users/new'
   end
 
@@ -27,12 +28,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @department = Department.find(@user.department_id)
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:fname, :lname, :department, :email, :password, :password_confirmation)
+    params.require(:user).permit(:fname, :lname, :department_id, :email, :password, :password_confirmation)
   end
 
   def change

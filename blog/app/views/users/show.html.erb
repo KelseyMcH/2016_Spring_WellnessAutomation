@@ -3,7 +3,7 @@
 <%= @user.fname.capitalize %> <%= @user.lname.capitalize %>
 </h1>
 
-<p> department: <span> <%= @user.department %> </p>
+<p> department: <span> <%= @department.name %> </p>
 <p> email: <span> <%= @user.email %> </p>
 <p><%= link_to "Change your password", '/change', method: :get %><p>
 </div>

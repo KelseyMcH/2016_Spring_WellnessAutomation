@@ -27,16 +27,17 @@ Activity.create(description: 'Try a new healthy recipe', value: 2);
 Activity.create(description: 'Get at least 7 hours of sleep', value: 2);
 Activity.create(description: 'When stressed, close your eyes and take 10 slow, deep breaths or visualize your favorite place for 30 seconds', value: 2);
 
-#Department.create(dept_name: 'Carrie\'s and Catering');
-#Department.create(dept_name: 'Dining Centers');
-#Department.create(dept_name: 'Help at Home');
-#Department.create(dept_name: 'Home Delivered');
-#Department.create(dept_name: 'IMPACT and CCC');
-#Department.create(dept_name: 'Kitchen');
-#Department.create(dept_name: 'Management and Grants');
-#Department.create(dept_name: 'Wellness');
+Department.create(name: 'Carrie\'s and Catering');
+Department.create(name: 'Dining Centers');
+Department.create(name: 'Help at Home');
+Department.create(name: 'Home Delivered');
+Department.create(name: 'IMPACT and CCC');
+Department.create(name: 'Kitchen');
+Department.create(name: 'Management and Grants');
+Department.create(name: 'Wellness');
+admindept = Department.create(name: 'Admin');
 
 
 
-admin = User.create(fname: "admin", lname: "admin", department: "admin", email: 'wellnessadmin@lifecarealliance.org', password: "dontforget", password_confirmation: "dontforget"); #password: dontforget
+admin = User.create(fname: "admin", lname: "admin", email: 'wellnessadmin@lifecarealliance.org', department_id: admindept.id, password: "dontforget", password_confirmation: "dontforget"); #password: dontforget
 admin.toggle!(:admin)

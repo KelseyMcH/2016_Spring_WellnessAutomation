@@ -1,7 +1,19 @@
 Rails.application.routes.draw do
   
 
-  resources :activities, :users
+  get 'departments/index'
+
+  get 'departments/new'
+
+  get 'departments/create'
+
+  get 'departments/destroy'
+
+  get 'departments/edit'
+
+  get 'departments/update'
+
+  resources :activities, :users, :departments
 
   get '/login' => 'welcome#index'
   post '/login' => 'sessions#create'

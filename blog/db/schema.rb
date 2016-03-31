@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331012915) do
+ActiveRecord::Schema.define(version: 20160331020203) do
 
   create_table "actions", force: :cascade do |t|
     t.datetime "created_at",              null: false
@@ -32,6 +32,12 @@ ActiveRecord::Schema.define(version: 20160331012915) do
     t.boolean  "needsquantity", default: false
   end
 
+  create_table "departments", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "fname"
     t.string   "lname"
@@ -49,10 +55,12 @@ ActiveRecord::Schema.define(version: 20160331012915) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "name"
-    t.string   "department"
     t.boolean  "admin",                  default: false
+    t.integer  "department_id"
+    t.integer  "department_id_id"
   end
 
+  add_index "users", ["department_id_id"], name: "index_users_on_department_id_id"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 

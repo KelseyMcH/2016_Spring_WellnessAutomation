@@ -1,0 +1,38 @@
+<div class = "col-md-2"></div>
+<div class = "col-md-8">
+<h1>Departments</h1>
+	<table>
+		<thead>
+			<tr>
+				<td>Name</td>
+			</tr>
+		</thead>
+		<tbody>
+			<% @departments.each do |department| %>
+			<tr>
+				<td><%= department.name %></td>
+				<td>
+					<%= link_to edit_department_path(department.id), :class => "btn btn-default btn-md" do  %>
+					<i class="glyphicon glyphicon-edit pull-left"></i>&nbsp;Edit Department
+				<%end%>
+				</td>
+				<td>
+					<%= link_to department_path(department.id),
+				      method: :delete,
+				      data: { confirm: 'Are you sure?' }, :class => "btn btn-default btn-md" do %>  
+				      	<i class="glyphicon glyphicon-remove pull-left"></i>&nbsp;Delete
+				    <%end%>
+				</td>
+			</tr>
+			<% end %>
+			<tr>
+				<td>
+					<%= link_to new_department_path, :class => "btn btn-default btn-md" do %>
+					<i class = "glyphicon glyphicon-plus pull-left"></i>&nbsp; New Department
+					<%end%>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div class = "col-md-2"></div>
