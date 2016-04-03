@@ -98,6 +98,7 @@ button, html input[type=button], input[type=reset]{
 
 .yield{
     height:130%;
+    background-color: #eee;
 }
 
 .btn-group-lg>.btn, .btn-lg {
@@ -113,4 +114,8 @@ button, html input[type=button], input[type=reset]{
 
 .header-text{
     color:#fff;
+}
+
+.user-guide{
+    color:#ba701e;
 }
