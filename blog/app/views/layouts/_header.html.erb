@@ -14,7 +14,7 @@
 
 
             <% if current_user %>
-                Signed in as <%= current_user.email %> | <%= link_to "Logout", '/logout' %>
+                <span class="header-text">Signed in as <%= current_user.fname %> <%= current_user.lname %> | <%= link_to "Logout", '/logout' %></span>
             <% end %>
             </div>
             
