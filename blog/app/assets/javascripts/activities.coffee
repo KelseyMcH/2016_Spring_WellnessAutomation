@@ -11,9 +11,12 @@ $(document).ready ->
       # If the list item does not contain the text phrase fade it out
       if $(this).text().search(new RegExp(filter, 'i')) < 0
         $(this).parent().fadeOut()
-        # Show the list item if the phrase matches and increase the count by 1
+        # Show the list item if the phrase matches
       else
         $(this).parent().show()
       return
+    return
+  $('#live-search').submit (e) ->
+      e.preventDefault()
     return
   return
