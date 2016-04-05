@@ -1,3 +1,4 @@
+<div class="yield">
 <div class = "col-md-2"></div>
 <div class = "col-md-8">
 <h1>Activities</h1>
@@ -9,8 +10,8 @@
 	<table>
 		<thead>
 			<tr>
-				<td>Description</td>
-				<td>Value</td>
+				<td class="descHeader">Description</td>
+				<td class="valHeader">Value</td>
 			</tr>
 		</thead>
 		<tbody>
@@ -31,39 +32,10 @@
 				      	<i class="glyphicon glyphicon-remove pull-left"></i>&nbsp;Delete
 				    <%end%>
 				</td>
-				<!-- otherwise they are only allowed to log activities -->
 				<% else %>
 				<td>
-				<% if !activity.needsquantity %>
 					<%= link_to actions_create_path(:user_id => current_user.id, :activity_id => activity.id), method: :post, :class => "btn btn-default btn-md" do  %>
-						<i class="glyphicon glyphicon-plus pull-left"></i>&nbsp;Log Activity
-					<%end%>
-				<%else%>
-					<!-- Button trigger modal (for activities that can have different quantities) -->
-					<button class="btn btn-default btn-md" data-toggle="modal" data-target="#approvalModal">
-						<i class="glyphicon glyphicon-plus pull-left"></i>&nbsp;Log Activity
-					</button>
-					<!-- Modal -->
-					<div class="modal fade" id="approvalModal" tabindex="-1" role="dialog" aria-labelledby="approvalModalLabel" aria-hidden="true">
-					  <div class="modal-dialog">
-					    <div class="modal-content">
-					      <div class="modal-header">
-					        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-					        <h4 class="modal-title">Quantity</h4>
-					      </div>
-					      <div class="modal-body">
-					        <%= form_tag actions_create_path(:user_id => current_user.id, :activity_id => activity.id, :minutes => params[:minutes]), method: :post, :class => "form-horizontal" do %>
-					              <%= label_tag 'minutes', 'How many minutes did you exercise?', :class => 'control-label' %>
-					              <%= text_field_tag :minutes, params[:minutes], :class => "form-control" %>
-					      </div>
-					      <div class="modal-footer">
-					        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-					           <%= submit_tag "Submit", name: nil, class: "btn btn-success" %>
-					        <% end %>
-					      </div>
-					    </div><!-- /.modal-content -->
-					  </div><!-- /.modal-dialog -->
-					</div><!-- /.modal -->
+					<i class="glyphicon glyphicon-plus pull-left"></i>&nbsp;Log Activity
 				<%end%>
 				</td>
 				<% end %>
@@ -83,3 +55,5 @@
 </div>
 <div class = "col-md-2"></div>
 
+
+</div>
