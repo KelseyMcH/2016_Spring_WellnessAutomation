@@ -25,4 +25,5 @@ class ActionsController < ApplicationController
     end
     redirect_to '/activities'
   end
+
 end

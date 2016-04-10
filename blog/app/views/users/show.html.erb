@@ -1,9 +1,23 @@
 <div class="jumbotron purpletext">
-<h1>
-<%= @user.fname.capitalize %> <%= @user.lname.capitalize %>
-</h1>
+<div class = "col-md-2"></div>
+<div class = "col-md-4">
+	<h1>
+	<%= @user.fname.capitalize %> <%= @user.lname.capitalize %>
+	</h1>
 
-<p> department: <span> <%= @department.name %> </p>
-<p> email: <span> <%= @user.email %> </p>
-<p><%= link_to "Change your password", '/change', method: :get %><p>
+	<p> Department: <span> <%= @department.name %> </p>
+	<p> Email: <span> <%= @user.email %> </p>
+	<% if current_user == @user %>
+		<p><%= link_to "Change your password", '/change', method: :get %><p>
+	<% end %>
+</div>
+<div class = "col-md-4">
+	<%if @score.first.points != nil %>
+	<h1 id = "gold"><%= @score.first.points %></h1>
+	<% else %>
+	<h1 id = "gold">0</h1>
+	<% end %>
+	<p>points this month</p>
+</div>
+<div class = "col-md-2"></div>
 </div>
