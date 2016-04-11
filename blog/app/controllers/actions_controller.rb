@@ -23,4 +23,5 @@ class ActionsController < ApplicationController
     end
     redirect_to "/activities#index"
   end
+
 end

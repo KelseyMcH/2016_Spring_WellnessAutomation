@@ -1,3 +1,5 @@
+require 'date'
+
 class UsersController < ApplicationController
 
   #get actions as json 
@@ -43,7 +45,10 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.select("*").joins(:department)
+    @month = 4
+    @year = 2016
+    @scoresbydept = Action.joins(:activity, [user: :department]).by_month(@year,@month).group(:department_id).select("department_id as id, departments.name as name, sum(quantity*value) as points")
+    @scoresbyuser = Action.joins(:activity, [user: :department]).by_month(@year,@month).group(:user_id).select("user_id as id, department_id as did, fname, lname, email, departments.name as dname, sum(quantity*value) as points")
   end
 
   def show
@@ -58,6 +63,8 @@ class UsersController < ApplicationController
       @points += activity.value
     end
     @points
+    #sam
+    @score = Action.joins(:activity, [user: :department]).by_month(Date.today.year,Date.today.month).where("user_id = " + @user.id.to_s).select("sum(quantity*value) as points")
 
   end
 
@@ -71,3 +78,4 @@ class UsersController < ApplicationController
   end
 
 end
+

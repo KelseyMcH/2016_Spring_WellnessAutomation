@@ -9,8 +9,8 @@
 	  <li class="active"><a href="#tab-1" data-toggle="tab">User Scores</a></li>
 	  <li><a href="#tab-2" data-toggle="tab">Department Scores</a></li>
 	</ul>
-
 	<!-- Tab panes -->
+
 	<div class="tab-content well">
 		<div class="tab-pane active" id="tab-1">
 			<div class="tablecontainer">
@@ -23,11 +23,11 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% @users.each do |x| %>
+					<% @scoresbyuser.each do |x| %>
 						<tr>
-							<td><%= link_to x.email, x %></td>
-				      		<td><%= link_to x.name, x %></td>
-				      		<td>0</td>
+							<td><%= link_to x.fname + " " + x.lname, user_path(x.id) %></td>
+				      		<td><%= link_to x.dname, department_path(x.did) %></td>
+				      		<td><%= x.points %></td>
 						</tr>
 					<% end %>
 				</tbody>
@@ -43,10 +43,10 @@
 							</tr>
 						</thead>
 						<tbody>
-							<% @users.each do |x| %>
+							<% @scoresbydept.each do |x| %>
 								<tr>
-						      		<td><%= link_to x.department_id, x %></td>
-						      		<td>0</td>
+						      		<td><%= link_to x.name, department_path(x.id) %></td>
+						      		<td><%= x.points %></td>
 								</tr>
 							<% end %>
 						</tbody>
@@ -57,4 +57,3 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="//cdn.rawgit.com/tonystar/bootstrap-hover-tabs/v3.1.1/bootstrap-hover-tabs.js"></script>
-

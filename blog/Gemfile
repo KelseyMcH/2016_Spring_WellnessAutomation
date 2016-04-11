@@ -43,6 +43,10 @@ gem 'bcrypt'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+gem 'jquery-ui-rails'
+#use bootstrap datepicker for datepicker on scores page
+gem 'bootstrap-datepicker-rails'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
