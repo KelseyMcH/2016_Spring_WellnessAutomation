@@ -5,7 +5,17 @@ class WelcomeController < ApplicationController
     end
   end
 
-  def stats
+  def confirm_email
+    user = User.find_by_confirm_token(params[:confirm_token])
+    if user
+      user.email_activate
+      flash[:success] = "Welcome to the Sample App! Your email has been confirmed.
+      Please sign in to continue."
+      redirect_to '/login'
+    else
+      flash[:error] = "Sorry. User does not exist"
+      redirect_to '/login'
+    end
   end
 
   def profile

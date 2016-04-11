@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   
 
+  get 'password_resets/new'
+
+  get 'password_resets/edit'
+
   get 'departments/index'
 
   get 'departments/new'
@@ -15,14 +19,17 @@ Rails.application.routes.draw do
 
   resources :activities, :users, :departments
 
+  resources :password_resets,     only: [:new, :create, :edit, :update]
+
   get '/login' => 'welcome#index'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
-
+  get 'welcome/confirm_email' => 'welcome#confirm_email'
   get 'recover_password' => 'welcome#recover_password'
   get 'change' => 'users#change'
   get 'guide' => 'welcome#guide'
-
+  post '/goal' => 'users#goal'
+  get '/useractions' => 'users#useractions'
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
   get 'index' => 'users#index'

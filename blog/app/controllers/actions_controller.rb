@@ -10,9 +10,9 @@ class ActionsController < ApplicationController
       if @action.save
            @a= Activity.find(params[:activity_id])
            @user = current_user
-           oldpts = @user.points
-           @user.update_attribute(:points, oldpts+@a.value)
-           @user.save
+           #oldpts = @user.points
+           #@user.update_attribute(:points, oldpts+@a.value)
+           #@user.save
            flash[:success] = " You got #{@a.value} points for #{@a.description} at #{@action.created_at}"
 
       else

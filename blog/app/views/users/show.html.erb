@@ -2,8 +2,33 @@
 <h1>
 <%= @user.fname.capitalize %> <%= @user.lname.capitalize %>
 </h1>
-
-<p> department: <span> <%= @department.name %> </p>
-<p> email: <span> <%= @user.email %> </p>
-<p><%= link_to "Change your password", '/change', method: :get %><p>
+<p id="userid" style="display:none;">
+	<%= @user.id %>
+</p>
+<p> department: <span> <%= @department.name %> </span> </p>
+<p> email: <span> <%= @user.email %> </span> </p>
 </div>
+<div class="col-md-1"></div>
+<div class="col-md-2">
+<!-- if the current user is on his own page, this script will prompt them to enter their goal -->
+<%if current_user == @user %>
+	<% if @user.goal %>
+	  <p> current monthly goal:<span id="usergoal"><%= @user.goal %></span> </p> 
+	<%end%>
+	<input id="goal" type="value"/>
+	<button id="sbmt">update goal </button>
+<%= javascript_include_tag('goal.js') %>
+<%end%>
+
+</div>
+
+<!-- script that gets the action data and appends visual to dom -->
+<%= javascript_include_tag('progress.js') %>
+<div class="graphhere col-md-7">
+<p id="pts">Points: <%= @pts %> </p>
+
+</div>
+
+
+
+<div class="col-md-2"></div>

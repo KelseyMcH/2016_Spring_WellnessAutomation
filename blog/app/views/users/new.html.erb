@@ -9,9 +9,7 @@
     <p> First name:</p> <%= f.text_field :fname%> 
     <p> Last Name:</p> <%= f.text_field :lname%> 
     <p> Email:</p> <%= f.text_field :email%>
-    <% if true %>
     <p> Department:</p><%= f.collection_select :department_id, @departments, :id, :name, include_blank: true %>
-    <% end %>
     <p> Password:</p> <%= f.password_field :password%>
     <p> Password Confirmation:</p> <%= f.password_field :password_confirmation%>    
     <br/> <br/>

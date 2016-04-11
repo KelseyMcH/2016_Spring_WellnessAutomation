@@ -7,10 +7,12 @@
 <h1>Welcome</h1>
 <p>track your wellness program activities with Life Care Wellness!</p>
 <p>
-your password is: <%= @pwd %>
+your password is: <%= @user.password %>
 </p>
+
 <p>
-To login, just here: <%= @url %>.
+Please click the link to confirm your account and start tracking your activities!
 </p>
+<a href=<%=@link %>>Sign Up! </a>
 </body>
 </html>

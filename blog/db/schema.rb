@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331020203) do
+ActiveRecord::Schema.define(version: 20160411045355) do
 
   create_table "actions", force: :cascade do |t|
     t.datetime "created_at",              null: false
@@ -58,6 +58,9 @@ ActiveRecord::Schema.define(version: 20160331020203) do
     t.boolean  "admin",                  default: false
     t.integer  "department_id"
     t.integer  "department_id_id"
+    t.integer  "goal",                   default: 100,   null: false
+    t.boolean  "email_confirmed",        default: false
+    t.string   "confirm_token"
   end
 
   add_index "users", ["department_id_id"], name: "index_users_on_department_id_id"

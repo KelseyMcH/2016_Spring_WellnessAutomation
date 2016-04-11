@@ -3,14 +3,15 @@ class UserMailer < ApplicationMailer
 
 
 
-	def reset_password_email(user)
-
-	end
+	 def password_reset(user)
+      @user = user
+      @pwdlink = "wellnessautomation.herokuapp.com/password_resets/"+ @user.reset_password_token + "/edit?email=" + @user.email
+      mail to: user.email, subject: "Password reset"
+  	end
 	
-	def welcome_email(user,pwd)
+	def registration_confirmation(user)
 		@user = user
-		@pwd = pwd
-		@url = 'http://wellnessautomation.herokaupp.com/login'
+		@link = "wellnessautomation.herokuapp.com/welcome/confirm_email?confirm_token=" + @user.confirm_token 
 		mail(to:@user.email, subject: 'Welcome to LifeCare Wellness!')
 	end
 end

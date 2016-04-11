@@ -91,7 +91,7 @@ body {
 .footer {
 	background-color: rgb(73, 47, 148);
 	width: 100%;
-	position: relative;
+	position: fixed;
 	bottom: 0px;
 }
 
@@ -140,7 +140,7 @@ body {
 .footer {
     background-color: rgb(73, 47, 148); /*#351c7a; */
     width: 100%;
-    position: relative;
+    position: fixed;
     bottom: 0px;
 }
 .nav.navbar-nav.navbar-right li a {
@@ -199,18 +199,3 @@ color: #3a87ad;
 background-color: #d9edf7;
 border-color: #bce8f1;
 }
-
-.pass_recover{
-	width:35%!important;
-    -moz-border-radius:15px;
-    border-radius: 15px;
-    border:solid 1px black;
-    padding:5px;
-    margin-bottom:5%;
-}
-
-.recover-Title{
-	padding-top:2%;
-	font-size:48px;
-}
-
