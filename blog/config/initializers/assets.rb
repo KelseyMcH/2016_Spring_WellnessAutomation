@@ -11,4 +11,4 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( goal.js )
-Rails.application.config.assets.precompile += %w( progress.js )
+Rails.application.config.assets.precompile += %w( stupidtable.js )

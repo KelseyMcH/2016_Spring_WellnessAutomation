@@ -1,59 +1,96 @@
 <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
 <div class="jumbotron purpletext">
-	<h1>HIGH SCORES<span id="gold" class="glyphicon glyphicon-star-empty"></span></h1>
+	<h1>Progress<span id="gold" class="glyphicon glyphicon-star-empty"></span></h1>
 </div>
+<style>
 
-<div class="score-container">
+    th {
+      background-color: #eee;
+    }
+    th[data-sort]{
+      cursor:pointer;
+    }
+</style>
+<div class="col-md-1"></div>
+<div class="score-containe col-md-10">
 	<!-- Nav pills -->
 	<ul class="nav nav-pills">
 	  <li class="active"><a href="#tab-1" data-toggle="tab">User Scores</a></li>
 	  <li><a href="#tab-2" data-toggle="tab">Department Scores</a></li>
 	</ul>
-	<!-- Tab panes -->
 
+	<!-- Tab panes -->
 	<div class="tab-content well">
 		<div class="tab-pane active" id="tab-1">
 			<div class="tablecontainer">
-			<table class="table user_table">
+			<table id="user_table" class="table user_table">
 				<thead>
 					<tr>
-						<th>Name</th>
-						<th>Department</th>
-						<th>Points</th>
+						<th data-sort="string">Name</th>
+						<th data-sort="string">Department</th>
+						<th data-sort="int" data-sort-default="desc">Points</th>
+						<%if current_user and current_user.admin %>
+						<th data-sort="string">Delete</th>
+						<% end %>
 					</tr>
 				</thead>
-				<tbody>
-					<% @scoresbyuser.each do |x| %>
-						<tr>
-							<td><%= link_to x.fname + " " + x.lname, user_path(x.id) %></td>
-				      		<td><%= link_to x.dname, department_path(x.did) %></td>
-				      		<td><%= x.points %></td>
+				
+				<%if @scoresbyuser %>
+					<tbody>
+					<% @scoresbyuser.values.each do |p| %>
+						<tr> 
+							<td> <%= link_to p["name"], p["id"] %> </td>
+							<td> <%= p["dept"] %> </td>
+							<td> <%= p["pts"] %> </td>
+							<% if current_user and current_user.admin %>
+							<td> <%= link_to "delete", user_path(p["id"]),
+				      method: :delete,
+				      data: { confirm: 'Are you sure?' }, :class => "btn btn-default btn-md" %>  </td>
+							<% end %>
 						</tr>
 					<% end %>
-				</tbody>
+					</tbody>
+				<%end%>
 			</table>
 		</div>
 		</div>
 		<div class="tab-pane" id="tab-2">
-			<table class="table dep_table">
+			<table id="dep_table" class="table dep_table">
 						<thead>
 							<tr>
-								<th>Department</th>
-								<th>Points</th>
+								<th data-sort="string">Department</th>
+								<th data-sort="float">Points</th>
+								<th data-sort="float">Points per Person</th>
 							</tr>
 						</thead>
+						<% if @scoresbydept %>
 						<tbody>
-							<% @scoresbydept.each do |x| %>
-								<tr>
-						      		<td><%= link_to x.name, department_path(x.id) %></td>
-						      		<td><%= x.points %></td>
-								</tr>
+							
+							<% @scoresbydept.values.each do |d| %>
+							<tr>
+								<td> <%= d["name"] %> </td> 
+								<td> <%= d["pts"] %> </td> 
+								<td> <%= d["pts"]/d["members"] %></td>
+							<tr>
 							<% end %>
+						
 						</tbody>
+						<% end %>
 					</table>
 		</div>
 	</div>
 </div>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<div class="col-md-1"></div>
+
+<script>
+$(document).ready(function(){
+    $('#user_table').stupidtable();
+    $('#dep_table').stupidtable();
+
+});
+</script>
+
+
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="//cdn.rawgit.com/tonystar/bootstrap-hover-tabs/v3.1.1/bootstrap-hover-tabs.js"></script>
+

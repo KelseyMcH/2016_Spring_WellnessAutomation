@@ -88,6 +88,11 @@ body {
 	margin-eft: 20px;
 }
 
+.header-text {
+	text-color: white;
+	font-color: white;
+	color: white;
+}
 .footer {
 	background-color: rgb(73, 47, 148);
 	width: 100%;
@@ -198,4 +203,31 @@ border-color: #eed3d7;
 color: #3a87ad;
 background-color: #d9edf7;
 border-color: #bce8f1;
+}
+
+.generatecontent {
+	margin-top: 100px;
+	margin-bottom: 120px;
+	max-height: 100%;
+}
+
+.tb {
+      border-collapse: collapse;
+}
+.teeh, .teed {
+      padding: 5px 10px;
+      border: 1px solid #999;
+      }
+.teeh {
+      background-color: #eee;
+    }
+
+.bigger-mobile-text {
+	font-size: 200%;
+	font-weight: 695;
+}
+text {
+	font-family: Verdana; 
+	font-color: black;
+
 }

@@ -38,6 +38,7 @@ Department.create(name: 'Wellness');
 admindept = Department.create(name: 'Admin');
 
 
-
 admin = User.create(fname: "admin", lname: "admin", email: 'wellnessadmin@lifecarealliance.org', department_id: admindept.id, password: "dontforget", password_confirmation: "dontforget"); #password: dontforget
 admin.toggle!(:admin)
+
+

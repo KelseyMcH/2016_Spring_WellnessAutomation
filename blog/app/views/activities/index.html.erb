@@ -2,6 +2,12 @@
 <div class = "col-md-2"></div>
 <div class = "col-md-8">
 <h1>Activities</h1>
+<br/><br/>
+<% if current_user and current_user.admin %>
+	<%= link_to new_activity_path, :class => "btn btn-default btn-md" do %>
+							<i class = "glyphicon glyphicon-plus pull-left"></i>&nbsp; New Activity
+	<%end%>
+<% end %>
 	<form id="live-search" action="" class="styled" method="post">
 	    <div class = "form-group">
 	        <input type="text" class="form-control" id="filter" placeholder="Search..." value="" />
@@ -12,6 +18,10 @@
 			<tr>
 				<th class = "text-left">Description</th>
 				<th class = "text-left">Value</th>
+				<% if current_user and current_user.admin %>
+					<th> Edit </th>
+					<th> Delete </th>
+				<% end %>
 
 			</tr>
 		</thead>
@@ -20,7 +30,7 @@
 			<tr>
 				<td class = "description"><%= activity.description %></td>
 				<td><%= activity.value %></td>
-				<% if current_user.admin %>
+				<% if current_user and current_user.admin %>
 				<td>
 					<%= link_to edit_activity_path(activity.id), :class => "btn btn-default btn-md" do  %>
 					<i class="glyphicon glyphicon-edit pull-left"></i>&nbsp;Edit Activity
@@ -42,17 +52,10 @@
 				<% end %>
 			</tr>
 			<% end %>
-			<% if current_user.admin %>
-				<tr>
-					<td>
-						<%= link_to new_activity_path, :class => "btn btn-default btn-md" do %>
-						<i class = "glyphicon glyphicon-plus pull-left"></i>&nbsp; New Activity
-						<%end%>
-					</td>
-				</tr>
-			<% end %>
+			
 		</tbody>
 	</table>
+	<br/> <br/>
 </div>
 <div class = "col-md-2"></div>
 

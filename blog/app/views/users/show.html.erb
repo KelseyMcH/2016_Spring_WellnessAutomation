@@ -1,5 +1,4 @@
 <div class="jumbotron purpletext">
-<<<<<<< HEAD
 <h1>
 <%= @user.fname.capitalize %> <%= @user.lname.capitalize %>
 </h1>
@@ -9,28 +8,180 @@
 <p> department: <span> <%= @department.name %> </span> </p>
 <p> email: <span> <%= @user.email %> </span> </p>
 </div>
-<div class="col-md-1"></div>
+<div class="col-md-2"></div>
+
+
+<div class="col-md-8">
+<p id="ssx" style="text-align:left;"> points this month: <span id="score"><%= @score %></span></p>
+<div id="graph"></div>
+<div id="thanksforthehelp"><span id="zero">0%</span><span id="twentyfive">25%</span><span id="fifty">50%</span><span id="seventyfive">75%</span><span id="hundred">100%</span>
+</div>
+    
+
+
+
+<%if current_user == @user %>
+    <br/><br/>
+        <button id="sbmt">update goal </button><input style="width: 50px; margin-left:10px;" id="goal" type="value"/>
+        <%= javascript_include_tag('goal.js') %>
+    <%end%>
+    <br/><br/>
+ <% if @actions %>
+ <table class="tb">
+ 	<tr> <th class="teeh">Activities</th><th class="teeh">Points</th> <th class="teeh"> Created </th> </tr>
+
+ <% @actions.each do |b| %>
+ <tr>
+ 	<td class="teed"> <%=b.description %> </td>
+ 	<td class="teed"> <%=b.points %> </td>
+ 	<td class="teed"> <%=b.created_at.strftime('%F') %> </td>
+ </tr>
+ <% end %>
+</table>
+ <% end %>
+</div>
+
 <div class="col-md-2">
 <!-- if the current user is on his own page, this script will prompt them to enter their goal -->
-<%if current_user == @user %>
+
 	<% if @user.goal %>
-	  <p> current monthly goal:<span id="usergoal"><%= @user.goal %></span> </p> 
+	  <p> monthly goal: <span id="usergoal"><%= @user.goal %></span> </p> 
 	<%end%>
-	<input id="goal" type="value"/>
-	<button id="sbmt">update goal </button>
-<%= javascript_include_tag('goal.js') %>
-<%end%>
+	<br/><br/>
 
-</div>
-
-<!-- script that gets the action data and appends visual to dom -->
-<%= javascript_include_tag('progress.js') %>
-<div class="graphhere col-md-7">
-<p id="pts">Points: <%= @pts %> </p>
 
 
 </div>
 
 
+<script>
+	
+$(document).ready(function(){
+            $('svg').remove();
+			var width = Math.floor(screen.width * .6);
+			var score = $('#score').text();
+    		var goal = $('#usergoal').text();
+			var progress =  score / goal;
 
-<div class="col-md-2"></div>
+			if(progress > 1){
+				progress = 1;
+				$('#ssx').text("Good job! you reached your goal.");
+			}
+			else {
+				$('#ssx').css("margin-left", progress*width-20);
+			}
+			
+			svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+
+
+    		svg.setAttribute('height', '50');
+
+			if(width < 550) {
+				svg.setAttribute('width', '60%');
+
+
+			}
+			else {
+				svg.setAttribute('width', width+20);
+
+			}
+	        
+            $('#zero').css("margin-left", 0);
+            $('#twentyfive').css("margin-left", width*.21);
+            $('#fifty').css("margin-left", width*.21);
+            $('#seventyfive').css("margin-left", width*.22);
+            $('#hundred').css("margin-left", width*.22);
+
+
+			var baseLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    		baseLine.setAttribute('x1', 4);
+    		baseLine.setAttribute('y1', 10);
+   			baseLine.setAttribute('x2', width);
+    		baseLine.setAttribute('y2', 10);
+    		baseLine.setAttribute('style', 'stroke:blue; stroke-opacity: .5; stroke-width: 20;');
+    		svg.appendChild(baseLine);
+
+
+    		var tick0 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    		tick0.setAttribute('x1', 2);
+    		tick0.setAttribute('y1', 0);
+   			tick0.setAttribute('x2', 2);
+    		tick0.setAttribute('y2', 30);
+    		tick0.setAttribute('style', 'stroke:black; stroke-width: 4;');
+    		svg.appendChild(tick0);
+
+           /* var text0= document.createElementNS('ttp://www.w3.org/2000/svg', 'text');
+            text0.setAttribute('x', 6);
+            text0.setAttribute('y', 0);
+            text0.textContent = "0";
+            legend.appendChild(text0);*/
+
+    		var tick1 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    		tick1.setAttribute('x1', (width*.25));
+    		tick1.setAttribute('y1', 0);
+   			tick1.setAttribute('x2', (width*.25));
+    		tick1.setAttribute('y2', 30);
+    		tick1.setAttribute('style', 'stroke:black; stroke-width: 4;');
+    		svg.appendChild(tick1);
+
+            /*var text1= document.createElementNS('ttp://www.w3.org/2000/svg', 'text');
+            text1.setAttribute('x', (width*.25));
+            text1.setAttribute('y', 0);
+            text1.textContent = "25";
+            legend.appendChild(text1);*/
+
+    		var tick2 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    		tick2.setAttribute('x1', (width*.5));
+    		tick2.setAttribute('y1', 0);
+   			tick2.setAttribute('x2', (width*.5));
+    		tick2.setAttribute('y2', 30);
+    		tick2.setAttribute('style', 'stroke:black; stroke-width: 4;');
+    		svg.appendChild(tick2);
+
+           /* var text2= document.createElementNS('ttp://www.w3.org/2000/svg', 'text');
+            text2.setAttribute('x', (width*.5));
+            text2.setAttribute('y', 0);
+            text2.textContent = "50";
+            legend.appendChild(text2);*/
+
+    		var tick3 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    		tick3.setAttribute('x1', (width*.75));
+    		tick3.setAttribute('y1', 0);
+   			tick3.setAttribute('x2', (width*.75));
+    		tick3.setAttribute('y2', 30);
+    		tick3.setAttribute('style', 'stroke:black; stroke-width: 4;');
+    		svg.appendChild(tick3);
+
+            /*var text3= document.createElementNS('ttp://www.w3.org/2000/svg', 'text');
+            text3.setAttribute('x', (width*.75));
+            text3.setAttribute('y', 0);
+            text3.textContent = "75";
+            legend.appendChild(text3);*/
+
+    		var tick4 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    		tick4.setAttribute('x1', width);
+    		tick4.setAttribute('y1', 0);
+   			tick4.setAttribute('x2', width);
+    		tick4.setAttribute('y2', 30);
+    		tick4.setAttribute('style', 'stroke:black; stroke-width: 4;');
+    		svg.appendChild(tick4);
+
+            /*var text4= document.createElementNS('ttp://www.w3.org/2000/svg', 'text');
+            text4.setAttribute('x', width);
+            text4.setAttribute('y', 0);
+            text4.textContent = "100";
+            legend.appendChild(text4);*/
+
+    		var prog= document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    		prog.setAttribute('x1', 4);
+    		prog.setAttribute('y1', 10);
+   			prog.setAttribute('x2', (progress*width));
+    		prog.setAttribute('y2', 10);
+    		prog.setAttribute('style', 'stroke:purple; stroke-opacity: .5; stroke-width: 20;');
+    		svg.appendChild(prog);
+
+
+	  	    $('#graph').append(svg);
+
+});
+</script>

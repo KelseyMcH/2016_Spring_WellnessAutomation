@@ -1,5 +1,3 @@
-require 'Date'
-
 class DepartmentsController < ApplicationController
   def index
     @departments = Department.all
@@ -32,11 +30,6 @@ class DepartmentsController < ApplicationController
     else
       render 'edit'
     end
-  end
-
-  def show
-    @department = Department.find(params[:id])
-    @scoresbyuser = Action.joins(:activity, [user: :department]).by_month(Date.today.year,Date.today.month).group(:user_id).select("user_id as id, fname, lname, email, sum(quantity*value) as points").where("department_id = " + params[:id])
   end
 
   private

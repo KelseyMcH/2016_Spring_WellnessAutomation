@@ -1,22 +1,28 @@
 <div class = "col-md-2"></div>
 <div class = "col-md-8">
 <h1>Departments</h1>
-	<table>
+<br/><br/>
+<%= link_to new_department_path, :class => "btn btn-default btn-md" do %>
+	<i class = "glyphicon glyphicon-plus pull-left"></i>&nbsp; New Department
+	<%end%>
+	<table class="tb">
 		<thead>
 			<tr>
-				<td>Name</td>
+				<th class="teeh">Name</th>
+				<th class="teeh">edit</th>
+				<th class="teeh">delete</th>
 			</tr>
 		</thead>
 		<tbody>
 			<% @departments.each do |department| %>
 			<tr>
-				<td><%= department.name %></td>
-				<td>
+				<td class="teed"><%= department.name %></td>
+				<td class="teed">
 					<%= link_to edit_department_path(department.id), :class => "btn btn-default btn-md" do  %>
 					<i class="glyphicon glyphicon-edit pull-left"></i>&nbsp;Edit Department
 				<%end%>
 				</td>
-				<td>
+				<td class="teed">
 					<%= link_to department_path(department.id),
 				      method: :delete,
 				      data: { confirm: 'Are you sure?' }, :class => "btn btn-default btn-md" do %>  
@@ -24,15 +30,12 @@
 				    <%end%>
 				</td>
 			</tr>
+
 			<% end %>
-			<tr>
-				<td>
-					<%= link_to new_department_path, :class => "btn btn-default btn-md" do %>
-					<i class = "glyphicon glyphicon-plus pull-left"></i>&nbsp; New Department
-					<%end%>
-				</td>
-			</tr>
 		</tbody>
 	</table>
+	
+<br/><br/>
+	
 </div>
 <div class = "col-md-2"></div>

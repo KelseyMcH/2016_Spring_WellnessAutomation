@@ -2,23 +2,20 @@
 <html>
 <head>
   <title>Wellness Tracker</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
   <%= csrf_meta_tags %>
     <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
   <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
   <!-- Latest compiled JavaScript -->
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-    <script type="text/javascript">
-    $(document).ready(function(){
-      $('.datepicker').datepicker();
-    });
-  </script>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 <body>
 
@@ -26,13 +23,14 @@
 
 <!-- render flash messages, a quick way to give feedback about activity -->
 
- <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
-  <% end %>
+
 
 
 <!-- Generate individual page content -->
-<div class="yield">
+<div class="generatecontent">
+   <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %>
 <%= yield %>
 </div>
 
