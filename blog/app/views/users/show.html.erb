@@ -10,8 +10,10 @@
 </div>
 <div class="col-md-2">
 <%if current_user == @user %>
+        <div class="sidepanel">
         <button class="btn btn-default btn-md" id="sbmt">update goal </button ><input style="width: 50px; margin-left:10px;" id="goal" type="value"/>
         <%= javascript_include_tag('goal.js') %>
+        </div>
     <%end%>
 </div>
 
@@ -26,7 +28,7 @@
 
     <br/><br/>
  <% if @actions %>
- <table class="tb">
+ <table class="tb padleft">
  	<tr> <th class="teeh"> Activities </th><th class="teeh"> Points </th> <th class="teeh"> Created </th> </tr>
 
  <% @actions.each do |b| %>
@@ -43,10 +45,11 @@
 
 <div class="col-md-2">
 <!-- if the current user is on his own page, this script will prompt them to enter their goal -->
-
+<div class="sidepanel">
 	<% if @user.goal %>
 	  <p> monthly goal: <span id="usergoal"><%= @user.goal %></span> </p> 
 	<%end%>
+</div>
 	<br/><br/>
 
 
@@ -80,10 +83,10 @@ $(document).ready(function(){
 			
 	        
             $('#zero').css("margin-left", 0);
-            $('#twentyfive').css("margin-left", width*.20);
-            $('#fifty').css("margin-left", width*.20);
-            $('#seventyfive').css("margin-left", width*.20);
-            $('#hundred').css("margin-left", width*.19);
+            $('#twentyfive').css("margin-left", (width/4)-30);
+            $('#fifty').css("margin-left", (width/4)-33);
+            $('#seventyfive').css("margin-left", (width/4)-36);
+            $('#hundred').css("margin-left", (width/4)-36);
 
             if(progress > 1){
                 progress = 1;

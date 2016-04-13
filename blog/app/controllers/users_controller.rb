@@ -24,29 +24,36 @@ class UsersController < ApplicationController
 
   def create
 
-    @user = User.new(user_params)
+    if(params.has_key?(:fname) && params.has_key?(:lname) && params.has_key?(:department_id) && params.has_key?(:email) && params.has_key?(:password) && params.has_key?(:password_confirmation))
 
-    domain = @user.email.slice(/@.*/)
-    #JUST TESTING THE EMAIL REGISTRATION
+      @user = User.new(user_params)
 
-    #if domain != "@lifecarealliance.org"
-     # flash[:error] = "email is not a lifecarealliance address. "
-      #render :action => 'new'
-    #else
-    if User.exists?( :email => params[:email]) 
-      flash[:error] = "email is taken"
-      render :action => 'new'
+      #domain = @user.email.slice(/@.*/)
+      #COMMENTED OUT FOR TESTING
+
+      #if domain != "@lifecarealliance.org"
+        #flash[:error] = "email is not a lifecarealliance address. "
+        #render :action => 'new'
+      #else
+        if User.exists?( :email => params[:email]) 
+          flash[:error] = "email is taken"
+          render :action => 'new'
+        else
+          if @user.save
+            UserMailer.registration_confirmation(@user).deliver
+            flash[:success] = "Please confirm your email address to continue"
+            redirect_to root_url
+          else
+            flash[:error] = "user is already created"
+          render :action => 'new'
+          end
+        end
+      #end
+
     else
-      if @user.save
-        UserMailer.registration_confirmation(@user).deliver
-        flash[:success] = "Please confirm your email address to continue"
-        redirect_to root_url
-      else
-        flash[:error] = "user is already created"
-      render :action => 'new'
-      end
+      flash[:error] = "form can't have blank fields. "
+      redirect_to '/signup'
     end
-    #emd
   end
 
   def index
