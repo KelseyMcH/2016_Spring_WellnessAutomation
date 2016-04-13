@@ -33,7 +33,7 @@ class UsersController < ApplicationController
      # flash[:error] = "email is not a lifecarealliance address. "
       #render :action => 'new'
     #else
-    if User.exists?( :email => params[:email])
+    if User.exists?( :email => params[:email]) 
       flash[:error] = "email is taken"
       render :action => 'new'
     else
@@ -57,10 +57,10 @@ class UsersController < ApplicationController
 
     @activities.each do |a|
       if @scoresbyuser[a.email]
-         @scoresbyuser[a.email]["pts"] += a.points
+         @scoresbyuser[a.email]["pts"] += (a.points * a.quantity)
       else
         user = Hash.new
-        user["pts"] = a.points
+        user["pts"] = (a.points * a.quantity)
         user["dept"] = Department.find(a.department_id).name
         user["name"] = a.fname + " " + a.lname
         user["id"] = User.find(a.user_id)
@@ -69,12 +69,12 @@ class UsersController < ApplicationController
       end
 
       if @scoresbydept[a.department_id]
-        @scoresbydept[a.department_id]["pts"] += a.points
+        @scoresbydept[a.department_id]["pts"] += (a.points * a.quantity)
       else
         dept = Hash.new
-        dept["pts"] = a.points
+        dept["pts"] = (a.points * a.quantity)
         dept["name"] = Department.find(a.department_id).name
-        result = User.where("department_id = ?", a.department_id).select("email")
+        result = User.where("department_id = ? AND email_confirmed = ?", a.department_id, true).select("email")
         if result
          dept["members"] = result.length
         else
@@ -91,13 +91,10 @@ class UsersController < ApplicationController
     @score = 0
 
     @actions.each do |a|
-       @score += a.points
+       @score += (a.points * a.quantity)
     end
 
     @department = Department.find(@user.department_id)
-    @departments = Department.all
-
-
 
   end
 

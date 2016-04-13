@@ -1,5 +1,5 @@
 <div class="jumbotron purpletext">
-<h1>
+<h1 id="name">
 <%= @user.fname.capitalize %> <%= @user.lname.capitalize %>
 </h1>
 <p id="userid" style="display:none;">
@@ -8,37 +8,37 @@
 <p> department: <span> <%= @department.name %> </span> </p>
 <p> email: <span> <%= @user.email %> </span> </p>
 </div>
-<div class="col-md-2"></div>
+<div class="col-md-2">
+<%if current_user == @user %>
+        <button class="btn btn-default btn-md" id="sbmt">update goal </button ><input style="width: 50px; margin-left:10px;" id="goal" type="value"/>
+        <%= javascript_include_tag('goal.js') %>
+    <%end%>
+</div>
 
 
 <div class="col-md-8">
 <p id="ssx" style="text-align:left;"> points this month: <span id="score"><%= @score %></span></p>
 <div id="graph"></div>
-<div id="thanksforthehelp"><span id="zero">0%</span><span id="twentyfive">25%</span><span id="fifty">50%</span><span id="seventyfive">75%</span><span id="hundred">100%</span>
+<div><span id="zero">0%</span><span id="twentyfive">25%</span><span id="fifty">50%</span><span id="seventyfive">75%</span><span id="hundred">100%</span>
 </div>
-    
 
 
 
-<%if current_user == @user %>
-    <br/><br/>
-        <button id="sbmt">update goal </button><input style="width: 50px; margin-left:10px;" id="goal" type="value"/>
-        <%= javascript_include_tag('goal.js') %>
-    <%end%>
     <br/><br/>
  <% if @actions %>
  <table class="tb">
- 	<tr> <th class="teeh">Activities</th><th class="teeh">Points</th> <th class="teeh"> Created </th> </tr>
+ 	<tr> <th class="teeh"> Activities </th><th class="teeh"> Points </th> <th class="teeh"> Created </th> </tr>
 
  <% @actions.each do |b| %>
  <tr>
  	<td class="teed"> <%=b.description %> </td>
- 	<td class="teed"> <%=b.points %> </td>
+ 	<td class="teed"> <%= Integer(b.points) * Integer(b.quantity) %> </td>
  	<td class="teed"> <%=b.created_at.strftime('%F') %> </td>
  </tr>
  <% end %>
 </table>
  <% end %>
+ <br/><br/>
 </div>
 
 <div class="col-md-2">
@@ -57,48 +57,48 @@
 <script>
 	
 $(document).ready(function(){
+
+
+        makeProgress = function(){
             $('svg').remove();
-			var width = Math.floor(screen.width * .6);
+			var width = window.innerWidth-60;
 			var score = $('#score').text();
     		var goal = $('#usergoal').text();
-			var progress =  score / goal;
-
-			if(progress > 1){
-				progress = 1;
-				$('#ssx').text("Good job! you reached your goal.");
-			}
-			else {
-				$('#ssx').css("margin-left", progress*width-20);
-			}
+			var progress =  score / goal;		
+            
+            //who needs mike mbostock	
 			
 			svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
 
-
+            if (width > 927){
+                width = (width+40) * .62;
+            }
     		svg.setAttribute('height', '50');
 
-			if(width < 550) {
-				svg.setAttribute('width', '60%');
+			svg.setAttribute('width', width);
 
-
-			}
-			else {
-				svg.setAttribute('width', width+20);
-
-			}
+			
 	        
             $('#zero').css("margin-left", 0);
-            $('#twentyfive').css("margin-left", width*.21);
-            $('#fifty').css("margin-left", width*.21);
-            $('#seventyfive').css("margin-left", width*.22);
-            $('#hundred').css("margin-left", width*.22);
+            $('#twentyfive').css("margin-left", width*.20);
+            $('#fifty').css("margin-left", width*.20);
+            $('#seventyfive').css("margin-left", width*.20);
+            $('#hundred').css("margin-left", width*.19);
 
+            if(progress > 1){
+                progress = 1;
+                $('#ssx').text("Good job! you reached your goal.");
+            }
+            else {
+                $('#ssx').css("margin-left", progress*width-40);
+            }
 
 			var baseLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
     		baseLine.setAttribute('x1', 4);
     		baseLine.setAttribute('y1', 10);
    			baseLine.setAttribute('x2', width);
     		baseLine.setAttribute('y2', 10);
-    		baseLine.setAttribute('style', 'stroke:blue; stroke-opacity: .5; stroke-width: 20;');
+    		baseLine.setAttribute('style', 'stroke:gray; stroke-opacity: .5; stroke-width: 20;');
     		svg.appendChild(baseLine);
 
 
@@ -159,9 +159,9 @@ $(document).ready(function(){
             legend.appendChild(text3);*/
 
     		var tick4 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-    		tick4.setAttribute('x1', width);
+    		tick4.setAttribute('x1', width-2);
     		tick4.setAttribute('y1', 0);
-   			tick4.setAttribute('x2', width);
+   			tick4.setAttribute('x2', width-2);
     		tick4.setAttribute('y2', 30);
     		tick4.setAttribute('style', 'stroke:black; stroke-width: 4;');
     		svg.appendChild(tick4);
@@ -177,11 +177,16 @@ $(document).ready(function(){
     		prog.setAttribute('y1', 10);
    			prog.setAttribute('x2', (progress*width));
     		prog.setAttribute('y2', 10);
-    		prog.setAttribute('style', 'stroke:purple; stroke-opacity: .5; stroke-width: 20;');
+    		prog.setAttribute('style', 'stroke:blue; stroke-opacity: .5; stroke-width: 20;');
     		svg.appendChild(prog);
 
+            $('#graph').append(svg);
 
-	  	    $('#graph').append(svg);
+        };  
+
+        makeProgress();
+        $( window ).resize(makeProgress);
+
 
 });
 </script>

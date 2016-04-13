@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
   get 'index' => 'users#index'
+  get 'csv/index' =>'csv#index'
 
   post 'actions/create' => 'actions#create' 
   

@@ -1,6 +1,9 @@
 <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
 <div class="jumbotron purpletext">
-	<h1>Progress<span id="gold" class="glyphicon glyphicon-star-empty"></span></h1>
+	<h1>Scoreboard<span id="gold" class="glyphicon glyphicon-star-empty"></span></h1>
+	<br/>
+	<p> Mouse over the tab to view points. Users without points are not shown. </p>
+	
 </div>
 <style>
 
@@ -13,12 +16,21 @@
 </style>
 <div class="col-md-1"></div>
 <div class="score-containe col-md-10">
+
+	<% if current_user and current_user.admin %>
+		<%= link_to csv_index_path(:format => "csv") do %>
+			<i class="glyphicon glyphicon-cloud-download pull-left"></i>&nbsp;Excel Data
+		<%end%>
+		<br/><br/>
+	<% end %>
 	<!-- Nav pills -->
 	<ul class="nav nav-pills">
 	  <li class="active"><a href="#tab-1" data-toggle="tab">User Scores</a></li>
 	  <li><a href="#tab-2" data-toggle="tab">Department Scores</a></li>
 	</ul>
-
+	<br/>
+	<h9> Click any column name to re-sort the table! </h9>
+	<br/>
 	<!-- Tab panes -->
 	<div class="tab-content well">
 		<div class="tab-pane active" id="tab-1">
@@ -43,9 +55,12 @@
 							<td> <%= p["dept"] %> </td>
 							<td> <%= p["pts"] %> </td>
 							<% if current_user and current_user.admin %>
-							<td> <%= link_to "delete", user_path(p["id"]),
+							<td> <%= link_to user_path(p["id"]),
 				      method: :delete,
-				      data: { confirm: 'Are you sure?' }, :class => "btn btn-default btn-md" %>  </td>
+				      data: { confirm: 'Are you sure?' }, :class => "btn btn-default btn-md" do %> 
+				      <i class="glyphicon glyphicon-trash pull-left"></i>&nbsp;Delete User
+				      <%end%>
+				  </td>
 							<% end %>
 						</tr>
 					<% end %>
@@ -60,7 +75,8 @@
 							<tr>
 								<th data-sort="string">Department</th>
 								<th data-sort="float">Points</th>
-								<th data-sort="float">Points per Person</th>
+								<th data-sort="float">Department Members </th>
+								<th data-sort="float">Points Per Person</th>
 							</tr>
 						</thead>
 						<% if @scoresbydept %>
@@ -70,6 +86,7 @@
 							<tr>
 								<td> <%= d["name"] %> </td> 
 								<td> <%= d["pts"] %> </td> 
+								<td> <%= d["members"] %> </td>
 								<td> <%= d["pts"]/d["members"] %></td>
 							<tr>
 							<% end %>

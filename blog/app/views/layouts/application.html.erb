@@ -19,6 +19,7 @@
 </head>
 <body>
 
+
 <%= render :partial => 'layouts/header' %>
 
 <!-- render flash messages, a quick way to give feedback about activity -->
@@ -29,13 +30,22 @@
 <!-- Generate individual page content -->
 <div class="generatecontent">
    <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
+        <div class="alert alert-<%= key %>"><%= value %> <span class="glyphicon glyphicon-remove-sign"></span> </div>
   <% end %>
+
 <%= yield %>
 </div>
 
 
 <%= render :partial => 'layouts/footer'%>
 
+<!-- script to hide alerts -->
+<script> 
+$(document).ready(function(){
+        $('.alert').click(function(){
+          $('.alert').css('display', 'none');
+        });
+});
+</script>
 </body>
 </html>

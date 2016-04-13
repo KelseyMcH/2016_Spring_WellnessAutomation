@@ -1,0 +1,6 @@
+<%- headers = ["activity id", "first name", "last name", "email", "department_id", "user id", "quantity", "created date", "activity description", "points per quantity"] -%>
+<%= CSV.generate_line(headers).strip%>
+<%- @activities.each do |a| -%>
+<%-   row = [ a.activity_id, a.fname, a.lname, a.email, a.department_id, a.user_id, a.quantity, a.created_at, a.description, a.points ] -%>
+<%= CSV.generate_line(row).html_safe.strip%>
+<%- end -%>

@@ -135,7 +135,7 @@ body {
 .whitetext {
     color: white;
 }
-.fuck *, .jumbotron * {
+.quick *, .jumbotron * {
     text-align: center;
     margin: 0 auto;
 }
@@ -184,6 +184,7 @@ border: 1px solid #fbeed5;
 -webkit-border-radius: 4px;
 -moz-border-radius: 4px;
 border-radius: 4px;
+text-align: center;
 }
 
 .alert-success {
@@ -206,7 +207,7 @@ border-color: #bce8f1;
 }
 
 .generatecontent {
-	margin-top: 100px;
+	margin-top: 80px;
 	margin-bottom: 120px;
 	max-height: 100%;
 }
@@ -230,4 +231,14 @@ text {
 	font-family: Verdana; 
 	font-color: black;
 
+}
+
+span {
+	font-weight: 685;
+	font-size: 129%;
+}
+
+#name {
+	text-color: #88cc88;
+	color: #7777bb;
 }
