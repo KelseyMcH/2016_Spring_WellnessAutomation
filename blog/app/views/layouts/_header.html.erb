@@ -14,7 +14,7 @@
 
 
             <% if current_user %>
-                <span class="header-text">Signed in as <%= current_user.fname %> <%= current_user.lname %> | <%= link_to "Logout", '/logout' %></span>
+                <span class="header-text">Signed in as <%= current_user.fname.capitalize %> <%= current_user.lname.capitalize %> | <%= link_to "Logout", '/logout' %></span>
             <% end %>
             </div>
             

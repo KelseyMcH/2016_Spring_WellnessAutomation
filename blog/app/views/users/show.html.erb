@@ -1,12 +1,21 @@
 <div class="jumbotron purpletext">
+<div class="col-md-10">
 <h1 id="name">
 <%= @user.fname.capitalize %> <%= @user.lname.capitalize %>
 </h1>
 <p id="userid" style="display:none;">
 	<%= @user.id %>
 </p>
-<p> department: <span> <%= @department.name %> </span> </p>
-<p> email: <span> <%= @user.email %> </span> </p>
+<p> <%= @department.name %> </p>
+<p> <%= @user.email %>  </p>
+</div>
+<div class="col-md-2">
+    <% if current_user == @user %> 
+        <div class="flexible">
+            <%= link_to "Add Points!", activities_path, :class => "special" %>
+        </div>
+    <% end %> 
+</div>
 </div>
 <div class="col-md-2">
 <%if current_user == @user %>
@@ -47,7 +56,7 @@
 <!-- if the current user is on his own page, this script will prompt them to enter their goal -->
 <div class="sidepanel">
 	<% if @user.goal %>
-	  <p> monthly goal: <span id="usergoal"><%= @user.goal %></span> </p> 
+	  <p style="text-align: center;" > monthly goal: <span id="usergoal"><%= @user.goal %></span> </p> 
 	<%end%>
 </div>
 	<br/><br/>
@@ -64,7 +73,7 @@ $(document).ready(function(){
 
         makeProgress = function(){
             $('svg').remove();
-			var width = window.innerWidth-60;
+			var width = window.innerWidth * .5;
 			var score = $('#score').text();
     		var goal = $('#usergoal').text();
 			var progress =  score / goal;		
@@ -73,8 +82,8 @@ $(document).ready(function(){
 			
 			svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
 
-            if (width > 927){
-                width = (width+40) * .62;
+            if (width < 470){
+               width = width - 70;
             }
     		svg.setAttribute('height', '50');
 
@@ -84,9 +93,9 @@ $(document).ready(function(){
 	        
             $('#zero').css("margin-left", 0);
             $('#twentyfive').css("margin-left", (width/4)-30);
-            $('#fifty').css("margin-left", (width/4)-33);
-            $('#seventyfive').css("margin-left", (width/4)-36);
-            $('#hundred').css("margin-left", (width/4)-36);
+            $('#fifty').css("margin-left", (width/4)-50);
+            $('#seventyfive').css("margin-left", (width/4)-50);
+            $('#hundred').css("margin-left", (width/4)-50);
 
             if(progress > 1){
                 progress = 1;

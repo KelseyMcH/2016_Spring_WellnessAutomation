@@ -135,6 +135,12 @@ body {
 .whitetext {
     color: white;
 }
+
+.jumbotron {
+	width: 96% !important;
+	margin: 0 auto;
+    box-shadow: 0 5px 6px rgba(0,0,0,0.18), 0 4px 6px rgba(0,0,0,0.24);
+}
 .quick *, .jumbotron * {
     text-align: center;
     margin: 0 auto;
@@ -217,7 +223,6 @@ border-color: #bce8f1;
 }
 .teeh, .teed {
       padding: 5px 10px;
-      border: 1px solid #999;
       }
 .teeh {
       background-color: #eee;
@@ -241,27 +246,66 @@ span {
 #name {
 	text-color: #88cc88;
 	color: #7777bb;
+	text-decoration: underline;
 }
 
 .sidepanel {
 	padding: 8px;
-	background-color: #eeeeef;
+	background-color: #efefef;
 	border-style: solid;
-	border-width: 1px;
-	border-color: #efefef;
-	border-radius: 2px;
-	margin-right: 30px;
-}
-
-@media all and (max-width: 980px){
-	
-	p,span,a,td,th {
-	 font-size: 135% !important;
-	 text-align: center;
- 	}
-
+	border-width: 2px;
+	border-bottom-width: 8px;
+	border-color: #ccccef;
+	border-radius: 8px;
+	margin-left: 10px;
 }
 
 .padleft {
 	align: center;
 }
+
+.notsowide {
+	max-width: 100px !important;
+}
+
+.alignleft {
+	text-align: left !important;
+}
+
+.alignright {
+	text-align: right !important;
+}
+
+.flexible {
+	display: flex;
+	vertical-align: center;
+	text-align: center;
+}
+
+.special {
+	flex: 1;
+	font-size: 140%;
+	background-color: #6767bb;
+	color: white;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #ccccef;
+	border-radius: 10px;
+	padding: 40px;
+}
+
+
+@media all and (max-width: 980px){
+	
+	p,span,a,td,th {
+	 font-size: 150% !important;
+ 	}
+
+ 	.special {
+ 	padding: 2px;
+ 	width: 100px;
+ 	max-height: 50px;
+ 	}
+
+}
+
