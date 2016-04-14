@@ -6,12 +6,12 @@
 <div class="quick">
 
   <%= form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
-    <p> First name:</p> <%= f.text_field :fname%> 
-    <p> Last Name:</p> <%= f.text_field :lname%> 
-    <p> Email:</p> <%= f.text_field :email%>
-    <p> Department:</p><%= f.collection_select :department_id, @departments, :id, :name, include_blank: true %>
-    <p> Password:</p> <%= f.password_field :password%>
-    <p> Password Confirmation:</p> <%= f.password_field :password_confirmation%>    
+    <p> First name:</p> <div class="field"><%= f.text_field :fname, :required => 'required'%>  </div>
+    <p> Last Name:</p> <div class="field"><%= f.text_field :lname, :required => 'required'%>  </div>
+    <p> Email:</p> <div class="field"><%= f.text_field :email, :required => 'required'%> </div>
+    <p> Department:</p> <div class="field"><%= f.collection_select :department_id, @departments, :id, :name, include_blank: true, :required => 'required' %> </div>
+    <p> Password:</p> <div class="field"><%= f.password_field :password, :required => 'required'%> </div>
+    <p> Password Confirmation:</p> <div class="field"><%= f.password_field :password_confirmation, :required => 'required'%> </div>    
     <br/> <br/>
     <%= f.submit :Signup %>
   <% end %>

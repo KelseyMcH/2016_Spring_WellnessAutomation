@@ -60,7 +60,7 @@
 						<i class="glyphicon glyphicon-plus pull-left"></i>&nbsp;Log Activity
 					<%end%>
 				<%else%>
-				<!-- problematic modal fix-->
+				<!-- you could write 10 lines of boostrap for a modal that doesn't work, or you can put the 1 item form in the table!-->
 					<%= form_tag actions_create_path(:user_id => current_user.id, :activity_id => activity.id, :minutes => params[:minutes]), method: :post, :class => "form-horizontal" do %>
 					    <%= text_field_tag :minutes, params[:minutes], :class => "form-control notsowide" %> <span class="alignright"> minutes </span>
 					    <br/>

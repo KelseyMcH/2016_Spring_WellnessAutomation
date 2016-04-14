@@ -24,35 +24,24 @@ class UsersController < ApplicationController
 
   def create
 
-    if(params.has_key?(:fname) && params.has_key?(:lname) && params.has_key?(:department_id) && params.has_key?(:email) && params.has_key?(:password) && params.has_key?(:password_confirmation))
-
-      @user = User.new(user_params)
-
-      #domain = @user.email.slice(/@.*/)
-      #COMMENTED OUT FOR TESTING
-
-      #if domain != "@lifecarealliance.org"
-        #flash[:error] = "email is not a lifecarealliance address. "
-        #render :action => 'new'
-      #else
-        if User.exists?( :email => params[:email]) 
-          flash[:error] = "email is taken"
-          render :action => 'new'
-        else
-          if @user.save
-            UserMailer.registration_confirmation(@user).deliver
-            flash[:success] = "Please confirm your email address to continue"
-            redirect_to root_url
-          else
-            flash[:error] = "user is already created"
-          render :action => 'new'
-          end
-        end
-      #end
-
+    @user = User.new(user_params)
+    domain = @user.email.slice(/@.*/)
+    if domain != "@lifecarealliance.org"
+      flash[:error] = "email is not a lifecarealliance address. "
+      redirect_to(:back)
+    elsif params[:password] != params[:password_confirmation]
+      flash[:error] = "passwords don't match"
+      redirect_to(:back)
+    elsif User.exists?( :email => params[:email]) 
+      flash[:error] = "email is taken"
+      redirect_to(:back)
+    elsif @user.save
+      UserMailer.registration_confirmation(@user).deliver
+      flash[:success] = "Please confirm your email address to continue"
+      redirect_to root_url
     else
-      flash[:error] = "form can't have blank fields. "
-      redirect_to '/signup'
+      flash[:error] = "user is already created"
+      redirect_to(:back)
     end
   end
 
