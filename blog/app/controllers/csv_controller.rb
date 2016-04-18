@@ -15,11 +15,14 @@ def index
 			#no one else needs the CSV 
 			redirect_to 'welcome/login' unless current_user and current_user.admin
 
-			#delete old activities
-			Action.where("actions.created_at < ?", (Date.today.at_beginning_of_month - 1.month)).destroy_all
 
-			#opposite query - recent activities
-			@activities = Action.joins(:activity,:user).where("actions.created_at > ?", (Date.today.at_beginning_of_month - 1.month)).select("activity_id, users.fname, users.lname, users.email, users.department_id, actions.user_id, actions.quantity, actions.created_at, activities.description, activities.value as points");
+
+			#get recent activities
+			@activities = Action.joins(:activity,:user).where("actions.created_at > ?", (Date.today.beginning_of_week - 7.days)).select("activity_id, users.fname, users.lname, users.email, users.department_id, actions.user_id, actions.quantity, actions.created_at, activities.description, activities.value as points");
+		   
+			#opposite: delete old activities
+			Action.where("actions.created_at < ?", (Date.today.beginning_of_week)).destroy_all
+
 		    response.headers['Content-Type'] = 'text/csv'
 		    response.headers['Content-Disposition'] = 'attachment; filename=activities.csv'    
 		    render :template => "csv/index.csv.erb"

@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   #get actions as json 
   def useractions
     respond_to do |format| 
-      @actions = Action.joins(:activity).where("User_id = ? AND actions.created_at > ?", params[:id], (Date.today.at_beginning_of_month)).select("activity_id, user_id, actions.quantity, actions.created_at, activities.description, activities.value as points")
+      @actions = Action.joins(:activity).where("User_id = ? AND actions.created_at > ?", params[:id], (Date.today.beginning_of_week)).select("activity_id, user_id, actions.quantity, actions.created_at, activities.description, activities.value as points")
       format.json { render :json => @actions }
     end
   end
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
     @user = User.new(user_params)
     domain = @user.email.slice(/@.*/)
-    if domain != "@lifecarealliance.org"
+    if domain.length < 1 # != "@lifecarealliance.org"
       flash[:error] = "email is not a lifecarealliance address. "
       redirect_to(:back)
     elsif params[:password] != params[:password_confirmation]
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    @activities = Action.joins(:activity,:user).where("actions.created_at > ?", (Date.today.at_beginning_of_month)).select("activity_id, users.fname, users.lname, users.email, users.department_id, actions.user_id, actions.quantity, actions.created_at, activities.description, activities.value as points")
+    @activities = Action.joins(:activity,:user).where("actions.created_at > ?", (Date.today.beginning_of_week)).select("activity_id, users.fname, users.lname, users.email, users.department_id, actions.user_id, actions.quantity, actions.created_at, activities.description, activities.value as points")
     @scoresbyuser = Hash.new
     @scoresbydept = Hash.new
 
@@ -83,7 +83,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @actions = Action.joins(:activity).where("User_id = ? AND actions.created_at > ?", params[:id], (Date.today.at_beginning_of_month)).select("activity_id, user_id, actions.quantity, actions.created_at, activities.description, activities.value as points")
+    @actions = Action.joins(:activity).where("User_id = ? AND actions.created_at > ?", params[:id], (Date.today.beginning_of_week)).select("activity_id, user_id, actions.quantity, actions.created_at, activities.description, activities.value as points")
     @score = 0
 
     @actions.each do |a|

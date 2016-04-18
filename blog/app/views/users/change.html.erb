@@ -1,4 +1,4 @@
-<div class="fuck">
+<div class="quick">
 	<h2 id="change-pass">Change your password</h2>
 	<div class ="form-group">
 		<%= form_tag '/change' do %>
@@ -9,7 +9,7 @@
 			</br>
 			<p>Desired Password</p>
 			<%= text_field_tag :new, nil, :placeholder => 'Enter desired password...' %>
-			<br/>
+			<br/><br/>
 			<%= submit_tag "Submit", :class => "btn btn-primary btn-lg subsign new-pass" %>
 		<% end %>
 	</div>

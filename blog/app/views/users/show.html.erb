@@ -36,7 +36,7 @@
 
 
     <br/><br/>
- <% if @actions %>
+ <% if @actions and current_user == @user %>
  <table class="tb padleft">
  	<tr> <th class="teeh"> Activities </th><th class="teeh"> Points </th> <th class="teeh"> Created </th> </tr>
 
@@ -56,7 +56,7 @@
 <!-- if the current user is on his own page, this script will prompt them to enter their goal -->
 <div class="sidepanel">
 	<% if @user.goal %>
-	  <p style="text-align: center;" > monthly goal: <span id="usergoal"><%= @user.goal %></span> </p> 
+	  <p style="text-align: center;" > weekly goal: <span id="usergoal"><%= @user.goal %></span> </p> 
 	<%end%>
 </div>
 	<br/><br/>
