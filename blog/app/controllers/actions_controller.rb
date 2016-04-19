@@ -13,7 +13,7 @@ class ActionsController < ApplicationController
     #create action
      @action = Action.new(:user_id => params[:user_id], :activity_id => params[:activity_id], :quantity => @quantity)
      #find if the same action has been created in the last 24 hours
-     @act = Action.find_by "activity_id = ? AND user_id = ? AND created_at > ?",params[:activity_id],params[:user_id],1.day.ago
+     @act = Action.find_by "activity_id = ? AND user_id = ? AND created_at >= ?",params[:activity_id],params[:user_id],Date.today
      if @act == nil
       if @action.save
            flash[:success] = " You got #{@a.value * @quantity} points for #{@a.description} at #{@action.created_at}"

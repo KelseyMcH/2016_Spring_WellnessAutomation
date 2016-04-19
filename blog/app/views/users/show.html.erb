@@ -3,7 +3,7 @@
 <h1 id="name">
 <%= @user.fname.capitalize %> <%= @user.lname.capitalize %>
 </h1>
-<span class="glyphicon glyphicon-user golden"></span>
+<span class="golden glyphicon glyphicon-user"></span>
 <p id="userid" style="display:none;">
 	<%= @user.id %>
 </p>
@@ -29,7 +29,7 @@
 
 
 <div class="col-md-8">
-<p id="ssx" style="text-align:left;"> points this month: <span id="score" class="golden"><%= @score %></span></p>
+<p id="ssx" style="text-align:left;"> points this week: <span id="score" class="golden"><%= @score %></span></p>
 <div id="graph"></div>
 <div><span id="zero">0%</span><span id="twentyfive">25%</span><span id="fifty">50%</span><span id="seventyfive">75%</span><span id="hundred">100%</span>
 </div>
