@@ -6,7 +6,6 @@
 	
 </div>
 <style>
-
     th {
       background-color: #eee;
     }
@@ -19,7 +18,11 @@
 
 	<% if current_user and current_user.admin %>
 		<%= link_to csv_index_path(:format => "csv") do %>
-			<i class="glyphicon glyphicon-cloud-download pull-left"></i>&nbsp;Excel Data
+			<i class="glyphicon glyphicon-cloud-download pull-left"></i>&nbsp;Download Excel Data From Start of Last Week to NOW
+		<%end%>
+		<br/>
+		<%= link_to csv_delete_path do %>
+			<i class="glyphicon glyphicon-remove-circle pull-left"></i>&nbsp;Delete Old Data (last week and older)
 		<%end%>
 		<br/><br/>
 	<% end %>

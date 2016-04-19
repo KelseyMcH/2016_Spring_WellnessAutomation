@@ -15,19 +15,27 @@ def index
 			#no one else needs the CSV 
 			redirect_to 'welcome/login' unless current_user and current_user.admin
 
-
-
 			#get recent activities
 			@activities = Action.joins(:activity,:user).where("actions.created_at > ?", (Date.today.beginning_of_week - 7.days)).select("activity_id, users.fname, users.lname, users.email, users.department_id, actions.user_id, actions.quantity, actions.created_at, activities.description, activities.value as points");
 		   
-			#opposite: delete old activities
-			Action.where("actions.created_at < ?", (Date.today.beginning_of_week)).destroy_all
-
 		    response.headers['Content-Type'] = 'text/csv'
 		    response.headers['Content-Disposition'] = 'attachment; filename=activities.csv'    
 		    render :template => "csv/index.csv.erb"
 		end
 	end
 end
+
+def delete
+
+	redirect_to 'welcome/login' unless current_user and current_user.admin
+
+	#opposite: delete old activities
+	Action.where("actions.created_at < ?", (Date.today.beginning_of_week)).destroy_all
+	flash[:success] = "You have deleted all activities recorded before this week"
+	redirect_to '/index'
+end
+
+
+
 end
 

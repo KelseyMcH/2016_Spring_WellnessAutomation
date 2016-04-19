@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   post '/users' => 'users#create'
   get 'index' => 'users#index'
   get 'csv/index' =>'csv#index'
-
+  get  'csv/delete' => 'csv#delete'
   post 'actions/create' => 'actions#create' 
   
   # The priority is based upon order of creation: first created -> highest priority.
